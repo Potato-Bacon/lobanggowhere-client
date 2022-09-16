@@ -1,4 +1,13 @@
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Admin from "./pages/Admin";
+import DealDetails from "./pages/DealDetails";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import PersonalProfile from "./pages/PersonalProfile";
+import PublicProfile from "./pages/PublicProfile";
+import Registration from "./pages/Registration";
+import Submission from "./pages/Submission";
 
 function App() {
   const handleClick = async () => {
@@ -17,10 +26,18 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>LobangGoWhere</h1>
-      <button onClick={handleClick}>Click Me</button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/submission" element={<Submission />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/deals/:id" element={<DealDetails />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/account" element={<PersonalProfile />} />
+        <Route path="/account/:id" element={<PublicProfile />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
