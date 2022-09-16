@@ -1,20 +1,51 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-const SERVER = import.meta.env.VITE_SERVER;
+import { useNavigate } from "react-router-dom";
+
+import { SERVER } from "../utils/constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const url = `${SERVER}register`;
 
 function Registration() {
+  const navigate = useNavigate();
+
+  const UserIsRegistered = () =>
+    toast.info("Your account have been created", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  const errorMessage = (errorMessage) => {
+    if (errorMessage === "Please use a unique username") {
+      return toast.info("Please use a unique username", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
   const formik = useFormik({
     initialValues: {
-      username: "",
+      userName: "",
       password: "",
       confirmPassword: "",
       email: "",
       dateOfBirth: "",
     },
     validationSchema: Yup.object({
-      username: Yup.string()
+      userName: Yup.string()
         .max(15, "Must be 15 characters or less")
         .required("Required"),
       password: Yup.string()
@@ -29,19 +60,19 @@ function Registration() {
     }),
 
     onSubmit: async (values) => {
-      console.log(values);
-      console.log(url);
       try {
-        const res = await axios.post(url, values, {
+        await axios.post(url, values, {
           headers: {
             "Content-Type": "application/json",
           },
         });
-        console.log(values);
-        console.log(res);
-      } catch (err) {
-        // Handle Error Here
-        console.error(err);
+        UserIsRegistered();
+        const test = () => {
+          navigate("/login");
+        };
+        setTimeout(test, 4000);
+      } catch (error) {
+        errorMessage(error.response.data.msg);
       }
     },
   });
@@ -50,17 +81,17 @@ function Registration() {
     <>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <label htmlFor="username">Username </label>
+          <label htmlFor="userName">Username </label>
           <input
             type="text"
-            id="username"
-            name="username"
+            id="userName"
+            name="userName"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.username}
+            value={formik.values.userName}
           />
-          {formik.touched.username && formik.errors.username ? (
-            <span>{formik.errors.username}</span>
+          {formik.touched.userName && formik.errors.userName ? (
+            <span>{formik.errors.userName}</span>
           ) : null}
         </div>
 
@@ -123,6 +154,19 @@ function Registration() {
 
         <button type="submit">Submit</button>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      {/* Same as */}
+      <ToastContainer />
     </>
   );
 }
