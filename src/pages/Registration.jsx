@@ -78,10 +78,10 @@ function Registration() {
           },
         });
         UserIsRegistered();
-        const test = () => {
+        const navigateToHome = () => {
           navigate("/login");
         };
-        setTimeout(test, 4000);
+        setTimeout(navigateToHome, 4000);
       } catch (error) {
         errorMessage(error.response.data.msg);
       }
@@ -176,7 +176,6 @@ function Registration() {
         draggable
         pauseOnHover
       />
-      {/* Same as */}
       <ToastContainer />
     </>
   );
