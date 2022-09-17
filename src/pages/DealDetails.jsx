@@ -1,16 +1,15 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SERVER } from "../utils/constants";
-import AuthContext from "../context/AuthProvider";
+import { useParams } from "react-router-dom";
 const url = `${SERVER}deals/`;
 
 function DealDetails() {
-  const { dealId } = useContext(AuthContext);
+  let { id } = useParams();
   const [render, setRender] = useState("");
   useEffect(() => {
     const fetchDeal = async () => {
-      const res = await axios.get(`${url}${dealId}`);
-      console.log(`${url}${dealId}`);
+      const res = await axios.get(`${url}${id}`);
       setRender(res.data);
     };
     fetchDeal();
