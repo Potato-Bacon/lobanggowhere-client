@@ -7,6 +7,7 @@ function DealDetails() {
   let { id } = useParams();
   const [render, setRender] = useState("");
   const url = `${SERVER}deals/${id}`;
+
   useEffect(() => {
     const fetchDeal = async () => {
       const res = await axios.get(url);
@@ -14,6 +15,15 @@ function DealDetails() {
     };
     fetchDeal();
   }, []);
+
+  const handleWatchList = () => {
+    const updateWatchList = async () => {
+      // const res = await axios.put(url);
+      //state to update watch list
+      //watchlist needs to show liked or not
+    };
+    updateWatchList();
+  };
 
   return (
     <>
@@ -30,7 +40,7 @@ function DealDetails() {
         <p>
           ❤️<span>{render.likes}</span>
         </p>
-        <button>Watch list</button>
+        <button onClick={handleWatchList}>WatchList</button>
       </div>
       <div>
         <h3>
