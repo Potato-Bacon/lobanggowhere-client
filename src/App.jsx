@@ -8,6 +8,7 @@ import PersonalProfile from "./pages/PersonalProfile";
 import PublicProfile from "./pages/PublicProfile";
 import Registration from "./pages/Registration";
 import Submission from "./pages/Submission";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   const handleClick = async () => {
@@ -29,13 +30,17 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/submission" element={<Submission />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/deals/:id" element={<DealDetails />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/account" element={<PersonalProfile />} />
         <Route path="/account/:id" element={<PublicProfile />} />
+
+        {/* Protected routes that need to be logged in to access - sends them to login page if not logged in */}
+        <Route element={<RequireAuth />}>
+          <Route path="/submission" element={<Submission />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/account" element={<PersonalProfile />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
