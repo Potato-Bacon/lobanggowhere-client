@@ -10,6 +10,7 @@ import PersonalProfile from "./pages/PersonalProfile";
 import PublicProfile from "./pages/PublicProfile";
 import Registration from "./pages/Registration";
 import Submission from "./pages/Submission";
+import Unauthorized from "./pages/Unauthorized";
 
 function App() {
   const handleClick = async () => {
@@ -36,12 +37,15 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/deals/:id" element={<DealDetails />} />
           <Route path="/account/:id" element={<PublicProfile />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* Requires logged in account in order to access paths */}
-          <Route element={<RequireAuth />}>
+          <Route element={<RequireAuth allowedRoles={["User"]} />}>
             <Route path="/submission" element={<Submission />} />
-            <Route path="/admin" element={<Admin />} />
             <Route path="/account" element={<PersonalProfile />} />
+          </Route>
+          <Route element={<RequireAuth allowedRoles={["Admin"]} />}>
+            <Route path="/admin" element={<Admin />} />
           </Route>
         </Route>
       </Routes>
