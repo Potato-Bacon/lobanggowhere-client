@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RequireAuth from "./components/RequireAuth";
 import Layout from "./Layout";
 import Admin from "./pages/Admin";
 import DealDetails from "./pages/DealDetails";
@@ -31,13 +32,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
-          <Route path="/submission" element={<Submission />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/deals/:id" element={<DealDetails />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/account" element={<PersonalProfile />} />
           <Route path="/account/:id" element={<PublicProfile />} />
+
+          {/* Requires logged in account in order to access paths */}
+          <Route element={<RequireAuth />}>
+            <Route path="/submission" element={<Submission />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/account" element={<PersonalProfile />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
