@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { SERVER } from "../utils/constants";
 import { useParams } from "react-router-dom";
-const url = `${SERVER}deals/`;
 
 function DealDetails() {
   let { id } = useParams();
   const [render, setRender] = useState("");
+  const url = `${SERVER}deals/${id}`;
   useEffect(() => {
     const fetchDeal = async () => {
-      const res = await axios.get(`${url}${id}`);
+      const res = await axios.get(url);
       setRender(res.data);
     };
     fetchDeal();
@@ -51,17 +51,17 @@ function DealDetails() {
         <h3>
           Category: <span>{render.category?.classification}</span>
         </h3>
-        {render?.dealsCategory === "Custom" && (
+        {render?.dealsCategory === "custom" && (
           <h3>
             Deal : <span>{render.custom}</span>
           </h3>
         )}
-        {render?.dealsCategory === "Free" && (
+        {render?.dealsCategory === "free" && (
           <h3>
             Deal : <span>Free</span>
           </h3>
         )}
-        {render?.dealsCategory === "Discount" && (
+        {render?.dealsCategory === "discounts" && (
           <div>
             <h3>Previous Price: ${render.priceBeforeDiscount}</h3>
             <h3>Discounted Price: ${render.priceAfterDiscount}</h3>

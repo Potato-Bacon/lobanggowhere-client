@@ -9,7 +9,6 @@ function Homepage() {
   useEffect(() => {
     const fetchDeal = async () => {
       const res = await axios.get(SERVER);
-      console.log(res.data);
       setDealsData(res.data);
     };
     fetchDeal();
@@ -19,8 +18,6 @@ function Homepage() {
       <h1>Homepage</h1>
       <div style={{ display: "flex" }}>
         <Deals dealsData={dealsData} />
-        {/* <Deals />
-        <Deals /> */}
       </div>
     </>
   );

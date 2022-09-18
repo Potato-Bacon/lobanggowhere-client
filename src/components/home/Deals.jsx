@@ -1,24 +1,38 @@
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 const Deals = ({ dealsData }) => {
+  let navigate = useNavigate();
+  const handleClick = (e) => () => {
+    const dealId = e._id;
+    navigate(`deals/${dealId}`);
+  };
   return (
     <>
-      {/* <div style={{ border: "1px solid black", width: 200, height: 250 }}>
-        <img src="" alt="Deal img" />
-        <h2>
-          Title <span>likes</span>
-        </h2>
-        <p>description</p>
-      </div> */}
-      {dealsData.map((x) => (
+      {dealsData.map((deal) => (
         <div
+          onClick={handleClick(deal)}
           key={uuidv4()}
-          style={{ border: "1px solid black", width: 200, height: 250 }}
+          style={{
+            border: "2px solid black",
+            width: "24rem",
+            height: 250,
+          }}
         >
-          {/* <img src={x.url} alt="Deal img" /> */}
-          <h3>{x.title}</h3>
-          <h3>likes {x.likes}</h3>
-          <p>{x.description}</p>
+          <img
+            style={{
+              minHeight: "16rem",
+              maxHeight: "16rem",
+              overflow: "hidden",
+              height: "100%",
+              width: "100%",
+            }}
+            src={deal.img}
+            alt="Deal img"
+          />
+          <h3>{deal.title}</h3>
+          <h3>likes {deal.likes}</h3>
+          <p>{deal.description}</p>
         </div>
       ))}
     </>
