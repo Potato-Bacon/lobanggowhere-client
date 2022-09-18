@@ -25,7 +25,7 @@ const Navbar = () => {
       <button onClick={handleNavigate}>Home</button>
       <button onClick={handleNavigate}>Admin</button>
       <button onClick={handleNavigate}>Profile</button>
-      {auth ? (
+      {auth?.user ? (
         <button onClick={handleNavigate}>Logout</button>
       ) : (
         <button onClick={handleNavigate}>Login</button>
