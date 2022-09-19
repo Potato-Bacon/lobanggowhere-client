@@ -32,7 +32,6 @@ const Deals = ({ dealsData }) => {
           />
           <h3>{deal.title}</h3>
           <h3>likes {deal.likes}</h3>
-          <p>{deal.description}</p>
         </div>
       ))}
     </>

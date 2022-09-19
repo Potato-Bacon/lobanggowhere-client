@@ -1,26 +1,43 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SERVER } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import AuthContext from "../context/AuthProvider";
 
 function DealDetails() {
+  const { user } = useContext(AuthContext);
   let { id } = useParams();
+  const [isWatchList, setIsWatchList] = useState(false);
   const [render, setRender] = useState("");
-  const url = `${SERVER}/deals/${id}`;
+  const url = `${SERVER}/deals`;
 
   useEffect(() => {
+    if (user.watchList.includes(id)) {
+      setIsWatchList(true);
+    }
     const fetchDeal = async () => {
-      const res = await axios.get(url);
+      const res = await axios.get(`${url}/${id}`);
       setRender(res.data);
     };
     fetchDeal();
   }, []);
 
   const handleWatchList = () => {
+    const name = user.userName;
+
     const updateWatchList = async () => {
-      // const res = await axios.put(url);
-      //state to update watch list
-      //watchlist needs to show liked or not
+      if (isWatchList === false) {
+        setIsWatchList(true);
+        const addWatchListURL = `${url}/addtowatchlist/${name}`;
+        const res = await axios.put(addWatchListURL, [id]);
+        console.log(res.data.watchList);
+      } else {
+        setIsWatchList(false);
+
+        const removeWatchListURL = `${url}/removefromwatchlist/${name}`;
+        const res = await axios.put(removeWatchListURL, [id]);
+        console.log(res.data.watchList);
+      }
     };
     updateWatchList();
   };
@@ -40,7 +57,12 @@ function DealDetails() {
         <p>
           ❤️<span>{render.likes}</span>
         </p>
-        <button onClick={handleWatchList}>WatchList</button>
+        <button
+          style={{ background: isWatchList === false ? "green" : "red" }}
+          onClick={handleWatchList}
+        >
+          WatchList
+        </button>
       </div>
       <div>
         <h3>
