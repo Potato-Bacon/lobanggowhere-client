@@ -10,12 +10,13 @@ const RequireAuth = ({ allowedRoles }) => {
   //? Refresh token is somewhere ??? In a cookie (Not sure)
 
   //* Temp auth const (Call API and return roles based on user)
-  const rolesCheck = { roles: [] };
+  const rolesCheck = user.roles;
+  console.log(rolesCheck);
 
   //* Change auth.roles to check /auth call return (like auth?.token)
   //? How about it returns the object & assigned to rolesCheck: {roles: ["user", "admin"]}
   // auth?.roles?.find(role => allowedRoles?.includes(role))
-  return rolesCheck?.roles?.find((role) => allowedRoles?.includes(role)) ? (
+  return rolesCheck?.find((role) => allowedRoles?.includes(role)) ? (
     <Outlet />
   ) : user?.userName ? (
     <Navigate to="/unauthorized" state={{ from: location }} replace />

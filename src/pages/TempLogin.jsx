@@ -35,10 +35,13 @@ const TempLogin = () => {
     e.preventDefault();
 
     try {
-      const response = axios.post(url, { userName, password });
-      console.log(JSON.stringify(response?.data));
-      const accessToken = response?.data?.accessToken;
-      setAuth(accessToken);
+
+      const response = await axios.post(url, { userName, password });
+
+      console.log(response?.data);
+      console.log(response?.data?.user);
+      const token = response?.data?.accessToken;
+      setAuth(token);
       setUser(response?.data?.user);
       setUserName("");
       setPassword("");
