@@ -35,8 +35,31 @@ const TempLogin = () => {
     e.preventDefault();
 
     try {
+      const response = await axios.post(
+        url,
+        { userName, password },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
 
-      const response = await axios.post(url, { userName, password });
+      // const response = await axios.post(
+      //   url,
+      //   { user, pwd },
+      //   {
+      //     headers: { "Content-Type": "application/json" },
+      //     withCredentials: true,
+      //   }
+      // );
+
+      //   const response = await axios.post(LOGIN_URL,
+      //     JSON.stringify({ user, pwd }),
+      //     {
+      //         headers: { 'Content-Type': 'application/json' },
+      //         withCredentials: true
+      //     }
+      // );
 
       console.log(response?.data);
       console.log(response?.data?.user);
