@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 function DealDetails() {
   let { id } = useParams();
   const [render, setRender] = useState("");
-  const url = `${SERVER}deals/${id}`;
+  const url = `${SERVER}/deals/${id}`;
 
   useEffect(() => {
     const fetchDeal = async () => {

@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../utils/constants";
+import AuthContext from "../context/AuthProvider";
 
-const Login = () => {
+const TempLogin = () => {
   const { setUser } = useContext(AuthContext);
   const { setAuth } = useAuth();
   const userRef = useRef();
@@ -14,7 +15,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
@@ -24,26 +25,26 @@ const Login = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [username, password]);
+  }, [userName, password]);
 
   const url = SERVER + "/login";
 
   const handleSubmit = async (e) => {
+    console.log("Submitting form");
+    console.log({ userName, password });
     e.preventDefault();
 
     try {
-      const response = axios.post(url, JSON.stringify({ username, password }), {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      const response = axios.post(url, { userName, password });
       console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       setAuth(accessToken);
       setUser(response?.data?.user);
-      setUsername("");
+      setUserName("");
       setPassword("");
       navigate(from, { replace: true });
     } catch (err) {
+      console.log("Error here");
       if (!err.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
@@ -66,15 +67,15 @@ const Login = () => {
       >
         {errMsg}
       </p>
-      <form onSubmit={{ handleSubmit }}>
-        <label htmlFor="username">Username: </label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="userName">Username: </label>
         <input
           type="text"
-          id="username"
+          id="userName"
           ref={userRef}
           autoComplete="off"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          onChange={(e) => setUserName(e.target.value)}
+          value={userName}
           required
         />
 
@@ -93,7 +94,10 @@ const Login = () => {
         <br />
         <span
           style={{ textDecoration: "Underline" }}
-          onClick={navigate("/register")}
+          onClick={() => {
+            console.log("Navigating to register");
+            navigate("/register");
+          }}
         >
           Sign Up
         </span>
@@ -101,3 +105,5 @@ const Login = () => {
     </section>
   );
 };
+
+export default TempLogin;
