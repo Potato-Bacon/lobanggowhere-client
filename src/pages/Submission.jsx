@@ -16,6 +16,10 @@ function Submission() {
     fetchCategories();
   }, []);
 
+  // const returnTrue = () => {
+  //   Yup.dealsCategory === "discount" ? true : false;
+  // };
+
   const today = new Date(Date.now());
   return (
     <>
@@ -61,10 +65,23 @@ function Submission() {
             .of(Yup.string().required("Select at least one"))
             .required("Select at least one"),
           url: Yup.string().required("Link is required").url("Link is invalid"),
+          address: Yup.string().when("category", {
+            is: (value) => value && value === "6323eba993531f8996098a53",
+            then: Yup.string().required("Address is required"),
+          }),
           dealsCategory: Yup.string().required("Please select one"),
-          // priceBeforeDiscount: Yup.number().required("Price is required"),
-          // priceAfterDiscount: Yup.number().required("Price is required"),
-          // custom: Yup.string().required("Field is required"),
+          priceBeforeDiscount: Yup.number().when("dealsCategory", {
+            is: (value) => value && value === "discounts",
+            then: Yup.number().required("Price is required"),
+          }),
+          priceAfterDiscount: Yup.number().when("dealsCategory", {
+            is: (value) => value && value === "discounts",
+            then: Yup.number().required("Price is required"),
+          }),
+          custom: Yup.string().when("dealsCategory", {
+            is: (value) => value && value === "custom",
+            then: Yup.string().required("Please fill in details"),
+          }),
           endDate: Yup.date().min(
             today,
             "Deal must be valid for more than a day"
@@ -98,9 +115,9 @@ function Submission() {
                     {category?.classification}
                   </option>
                 ))}
-                {errors.category && touched.category && errors.category}
                 {/* {Unable to get error message to work} */}
               </Field>
+              {errors.category && touched.category && errors.category}
 
               <br />
               <label>
@@ -152,11 +169,16 @@ function Submission() {
                 {errors.url && touched.url && errors.url}
               </label>
               <br />
-              <label>
-                Address
-                <Field name="address" value={values.address} />
-                {errors.address && touched.address && errors.address}
-              </label>
+
+              {values.category === "6323eba993531f8996098a53" && (
+                <>
+                  <label>
+                    Address*
+                    <Field name="address" value={values.address} />
+                    {errors.address && touched.address && errors.address}
+                  </label>
+                </>
+              )}
 
               <div role="group" aria-labelledby="my-radio-group">
                 <label>
@@ -181,6 +203,10 @@ function Submission() {
                       value={values.priceBeforeDiscount}
                     />
                   </label>
+                  {errors.priceBeforeDiscount &&
+                    touched.priceBeforeDiscount &&
+                    errors.priceBeforeDiscount}
+
                   <label>
                     <br />
                     Price After Discount
@@ -189,6 +215,9 @@ function Submission() {
                       value={values.priceAfterDiscount}
                     />
                   </label>
+                  {errors.priceAfterDiscount &&
+                    touched.priceAfterDiscount &&
+                    errors.priceAfterDiscount}
                   <br />
                 </>
               )}
@@ -199,6 +228,7 @@ function Submission() {
                     Custom
                     <Field name="custom" value={values.custom} />
                   </label>
+                  {errors.custom && touched.custom && errors.custom}
                   <br />
                 </>
               )}
