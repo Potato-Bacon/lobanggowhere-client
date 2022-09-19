@@ -34,6 +34,8 @@ const Deals = ({ dealsData }) => {
           <h3>likes {deal.likes}</h3>
         </div>
       ))}
+
+      <button onClick={() => navigate(`/submission`)}>Share a deal</button>
     </>
   );
 };
