@@ -5,16 +5,12 @@ import { useParams } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
 
 function DealDetails() {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   let { id } = useParams();
-  const [isWatchList, setIsWatchList] = useState(false);
   const [render, setRender] = useState("");
   const url = `${SERVER}/deals`;
 
   useEffect(() => {
-    if (user.watchList.includes(id)) {
-      setIsWatchList(true);
-    }
     const fetchDeal = async () => {
       const res = await axios.get(`${url}/${id}`);
       setRender(res.data);
@@ -26,13 +22,19 @@ function DealDetails() {
     const name = user.userName;
 
     const updateWatchList = async () => {
-      if (isWatchList === false) {
-        setIsWatchList(true);
+      if (user?.watchList?.includes(id) === false) {
+        const watching = structuredClone(user);
+        watching.watchList.push(id);
+        setUser(watching);
         const addWatchListURL = `${url}/addtowatchlist/${name}`;
         const res = await axios.put(addWatchListURL, [id]);
         console.log(res.data.watchList);
-      } else {
-        setIsWatchList(false);
+      }
+      if (user?.watchList?.includes(id) === true) {
+        const watching = structuredClone(user);
+        console.dir(watching);
+        watching.watchList.splice(watching.watchList.indexOf(id), 1);
+        setUser(watching);
 
         const removeWatchListURL = `${url}/removefromwatchlist/${name}`;
         const res = await axios.put(removeWatchListURL, [id]);
@@ -56,9 +58,13 @@ function DealDetails() {
         <h1>{render.title}</h1>
         <p>
           ❤️<span>{render.likes}</span>
+          <button>like</button>
         </p>
         <button
-          style={{ background: isWatchList === false ? "green" : "red" }}
+          style={{
+            background:
+              user?.watchList?.includes(id) === false ? "green" : "red",
+          }}
           onClick={handleWatchList}
         >
           WatchList

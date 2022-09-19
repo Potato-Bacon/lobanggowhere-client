@@ -40,10 +40,10 @@ function App() {
           <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* Requires logged in account in order to access paths */}
-          {/* <Route element={<RequireAuth allowedRoles={["User"]} />}> */}
-          <Route path="/submission" element={<Submission />} />
-          <Route path="/account" element={<PersonalProfile />} />
-          {/* </Route> */}
+          <Route element={<RequireAuth allowedRoles={["User"]} />}>
+            <Route path="/submission" element={<Submission />} />
+            <Route path="/account" element={<PersonalProfile />} />
+          </Route>
           <Route element={<RequireAuth allowedRoles={["Admin"]} />}>
             <Route path="/admin" element={<Admin />} />
           </Route>
