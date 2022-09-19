@@ -68,6 +68,7 @@ function PersonalProfile() {
   return (
     <>
       <h1>PersonalProfile</h1>
+
       <NavbarProfile setSelect={setSelect} />
 
       <AccountDetails select={select} />
