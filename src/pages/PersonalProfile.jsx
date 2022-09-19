@@ -16,19 +16,15 @@ function PersonalProfile() {
   // const navigate = useNavigate();
   // const location = useLocation();
 
-  const { setAuth, setUser, user } = useAuth();
+  const { setAuth, setUser } = useAuth();
   const url = SERVER + "/refresh";
 
   useEffect(
     () => {
       const callrefresh = async () => {
-        const response = await axios.post(
-          url,
-          { userName: user.userName },
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get(url, {
+          withCredentials: true,
+        });
 
         console.log(response.data.user);
         console.log(response.data.accessToken);
