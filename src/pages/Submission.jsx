@@ -52,9 +52,9 @@ function Submission() {
           }
         }}
         validationSchema={Yup.object({
-          img: Yup.mixed().required("File is required"),
+          img: Yup.string().required("Url is required"),
+          // img: Yup.mixed().required("File is required"),
           title: Yup.string()
-            .max(20, "Must be 30 characters or less")
             .min(8, "Must be 8 characters and more")
             .required("Title is required"),
           category: Yup.string().required("Category is required"),
@@ -99,7 +99,11 @@ function Submission() {
           <form onSubmit={handleSubmit}>
             <fieldset>
               <legend>Submission</legend>
-              <Field type="file" name="img" value={values.img} />
+              <label>
+                {" "}
+                URL
+                <Field type="name" name="img" value={values.img} />
+              </label>
               {errors.img && touched.img && errors.img}
               <br />
               <label>

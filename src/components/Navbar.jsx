@@ -13,7 +13,7 @@ const Navbar = () => {
       return navigate("/admin");
     }
     if (text === "Profile") {
-      return navigate("/login");
+      return navigate("/account");
     }
     if (text === "Login") {
       return navigate("/login");

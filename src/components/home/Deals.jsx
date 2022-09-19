@@ -35,6 +35,8 @@ const Deals = ({ dealsData }) => {
           <p>{deal.description}</p>
         </div>
       ))}
+
+      <button onClick={() => navigate(`/submission`)}>Share a deal</button>
     </>
   );
 };
