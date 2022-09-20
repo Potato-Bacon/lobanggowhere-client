@@ -5,7 +5,7 @@ import axios from "axios";
 import { SERVER } from "../utils/constants";
 import AuthContext from "../context/AuthProvider";
 
-const TempLogin = () => {
+const Login = () => {
   const { setUser } = useContext(AuthContext);
   const { setAuth } = useAuth();
   const userRef = useRef();
@@ -132,4 +132,4 @@ const TempLogin = () => {
   );
 };
 
-export default TempLogin;
+export default Login;
