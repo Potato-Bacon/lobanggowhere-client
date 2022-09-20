@@ -8,12 +8,14 @@ function DealDetails() {
   const { user, setUser } = useContext(AuthContext);
   let { id } = useParams();
   const [render, setRender] = useState("");
+  const [likeCount, setLikeCount] = useState("");
   const url = `${SERVER}/deals`;
 
   useEffect(() => {
     const fetchDeal = async () => {
       const res = await axios.get(`${url}/${id}`);
       setRender(res.data);
+      setLikeCount(res?.data?.likes?.length);
     };
     fetchDeal();
   }, []);
@@ -44,6 +46,40 @@ function DealDetails() {
     updateWatchList();
   };
 
+  const handleLike = () => {
+    const name = user.userName;
+    const updateLike = async () => {
+      if (user?.likes?.includes(id) === false) {
+        const userLike = structuredClone(user);
+        userLike.likes.push(id);
+        setUser(userLike);
+        setLikeCount(likeCount + 1);
+        // const addLikeURL = `${url}/addlike/${name}`;
+        // const res = await axios.put(addLikeURL, [id]);
+        // console.log(res.data.likes);
+
+        const addLikeToDealURL = `${url}/addcount/${id}`;
+        const dealRes = await axios.put(addLikeToDealURL, [name]);
+        console.log("add count", dealRes.data.likes);
+      }
+      if (user?.likes?.includes(id) === true) {
+        const userLike = structuredClone(user);
+        console.dir(userLike);
+        userLike.likes.splice(userLike.likes.indexOf(id), 1);
+        setUser(userLike);
+        setLikeCount(likeCount - 1);
+
+        // const removeLikeURL = `${url}/removelike/${name}`;
+        // const res = await axios.put(removeLikeURL, [id]);
+        // console.log(res.data.likes);
+
+        const subtractLikeToDealURL = `${url}/subtractcount/${id}`;
+        const dealRes = await axios.put(subtractLikeToDealURL, [name]);
+        console.log("remove", dealRes.data.likes);
+      }
+    };
+    updateLike();
+  };
   return (
     <>
       <div>
@@ -57,8 +93,16 @@ function DealDetails() {
         />
         <h1>{render.title}</h1>
         <p>
-          ❤️<span>{render.likes}</span>
-          <button>like</button>
+          ❤️<span>{likeCount}</span>
+          <button
+            style={{
+              background:
+                user?.likes?.includes(id) === false ? "white" : "green",
+            }}
+            onClick={handleLike}
+          >
+            like
+          </button>
         </p>
         <button
           style={{
