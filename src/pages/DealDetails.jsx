@@ -54,9 +54,9 @@ function DealDetails() {
         userLike.likes.push(id);
         setUser(userLike);
         setLikeCount(likeCount + 1);
-        // const addLikeURL = `${url}/addlike/${name}`;
-        // const res = await axios.put(addLikeURL, [id]);
-        // console.log(res.data.likes);
+        const addLikeURL = `${url}/addlike/${name}`;
+        const res = await axios.put(addLikeURL, [id]);
+        console.log(res.data.likes);
 
         const addLikeToDealURL = `${url}/addcount/${id}`;
         const dealRes = await axios.put(addLikeToDealURL, [name]);
@@ -69,9 +69,9 @@ function DealDetails() {
         setUser(userLike);
         setLikeCount(likeCount - 1);
 
-        // const removeLikeURL = `${url}/removelike/${name}`;
-        // const res = await axios.put(removeLikeURL, [id]);
-        // console.log(res.data.likes);
+        const removeLikeURL = `${url}/removelike/${name}`;
+        const res = await axios.put(removeLikeURL, [id]);
+        console.log(res.data.likes);
 
         const subtractLikeToDealURL = `${url}/subtractcount/${id}`;
         const dealRes = await axios.put(subtractLikeToDealURL, [name]);
