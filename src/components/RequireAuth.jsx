@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useLocation, Navigate, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { SERVER } from "../utils/constants";
