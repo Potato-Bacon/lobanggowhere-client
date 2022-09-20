@@ -43,29 +43,10 @@ const Login = () => {
           withCredentials: true,
         }
       );
-
-      // const response = await axios.post(
-      //   url,
-      //   { user, pwd },
-      //   {
-      //     headers: { "Content-Type": "application/json" },
-      //     withCredentials: true,
-      //   }
-      // );
-
-      //   const response = await axios.post(LOGIN_URL,
-      //     JSON.stringify({ user, pwd }),
-      //     {
-      //         headers: { 'Content-Type': 'application/json' },
-      //         withCredentials: true
-      //     }
-      // );
-
-      console.log(response?.data);
-      console.log(response?.data?.user);
-      const token = response?.data?.accessToken;
+      console.log(response.data?.payload.user);
+      const token = response.data?.payload.accessToken;
       setAuth(token);
-      setUser(response?.data?.user);
+      setUser(response.data?.payload.user);
       setUserName("");
       setPassword("");
       navigate(from, { replace: true });
