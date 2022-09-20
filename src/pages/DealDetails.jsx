@@ -1,15 +1,22 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { SERVER } from "../utils/constants";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
 
-function DealDetails() {
+function DealDetails({ setPublicProfile }) {
   const { user, setUser } = useContext(AuthContext);
   let { id } = useParams();
+
   const [render, setRender] = useState("");
   const [likeCount, setLikeCount] = useState("");
   const url = `${SERVER}/deals`;
+
+  const handlePublicProfile = async () => {
+    const url = SERVER + `/profile/${render.submittedBy}`;
+    const data = await axios.get(url);
+    setPublicProfile(data);
+  };
 
   useEffect(() => {
     const fetchDeal = async () => {
@@ -149,6 +156,15 @@ function DealDetails() {
             <h3>Discounted Price: ${render.priceAfterDiscount}</h3>
           </div>
         )}
+        <h3>
+          Submitted by :
+          <Link
+            onClick={handlePublicProfile}
+            to={`/profile/${render.submittedBy}`}
+          >
+            {render.submittedBy}
+          </Link>
+        </h3>
       </div>
     </>
   );

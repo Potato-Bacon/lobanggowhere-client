@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RequireAuth from "./components/RequireAuth";
 import Layout from "./Layout";
@@ -13,20 +14,7 @@ import Submission from "./pages/Submission";
 import Unauthorized from "./pages/Unauthorized";
 
 function App() {
-  const handleClick = async () => {
-    // const url = "http://localhost:3100";
-    // const request = await fetch(url);
-    // const data = await request.json();
-    // console.log(data);
-
-    const url = "http://localhost:3100";
-    const response = await axios.get(url);
-    console.log(response.data);
-
-    // axios
-    //   .get("http://localhost:3100")
-    //   .then((response) => console.log(response.data));
-  };
+  const [publicProfile, setPublicProfile] = useState({});
 
   return (
     <BrowserRouter>
@@ -35,9 +23,16 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/deals/:id" element={<DealDetails />} />
+          <Route
+            path="/deals/:id"
+            element={<DealDetails setPublicProfile={setPublicProfile} />}
+          />
           <Route path="/account/:id" element={<PublicProfile />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route
+            path="/profile/:username"
+            element={<PublicProfile publicProfile={publicProfile} />}
+          />
 
           {/* Requires logged in account in order to access paths */}
           <Route element={<RequireAuth allowedRoles={["User"]} />}>
