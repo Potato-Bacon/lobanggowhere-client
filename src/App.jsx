@@ -5,7 +5,7 @@ import Layout from "./Layout";
 import Admin from "./pages/Admin";
 import DealDetails from "./pages/DealDetails";
 import Homepage from "./pages/Homepage";
-import TempLogin from "./pages/TempLogin";
+import Login from "./pages/Login";
 import PersonalProfile from "./pages/PersonalProfile";
 import PublicProfile from "./pages/PublicProfile";
 import Registration from "./pages/Registration";
@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
-          <Route path="/login" element={<TempLogin />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/deals/:id" element={<DealDetails />} />
           <Route path="/account/:id" element={<PublicProfile />} />
