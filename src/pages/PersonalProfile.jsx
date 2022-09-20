@@ -26,10 +26,10 @@ function PersonalProfile() {
           withCredentials: true,
         });
 
-        console.log(response.data.user);
-        console.log(response.data.accessToken);
-        setUser(response?.data?.user);
-        setAuth(response.data.accessToken);
+        console.log(response.data.payload.user);
+        console.log(response.data.payload.accessToken);
+        setUser(response.data?.payload.user);
+        setAuth(response.data?.payload.accessToken);
       };
       console.log("Calling refresh once");
       callrefresh();
