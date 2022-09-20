@@ -31,7 +31,7 @@ const Deals = ({ dealsData }) => {
             alt="Deal img"
           />
           <h3>{deal.title}</h3>
-          <h3>likes {deal.likes}</h3>
+          <h3>likes {deal.likes.length}</h3>
         </div>
       ))}
 
