@@ -1,11 +1,14 @@
 import { Field, Formik } from "formik";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as Yup from "yup";
 import { SERVER } from "../utils/constants";
 import axios from "axios";
+import AuthContext from "../context/AuthProvider";
 
 function Submission() {
   const [categories, setCategories] = useState([]);
+  const { user } = useContext(AuthContext);
+  const [submission, setSubmission] = useState();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -16,6 +19,7 @@ function Submission() {
     fetchCategories();
   }, []);
 
+  const userName = user.userName;
   // const returnTrue = () => {
   //   Yup.dealsCategory === "discount" ? true : false;
   // };
@@ -39,14 +43,28 @@ function Submission() {
           priceAfterDiscount: "",
           custom: "",
           startDate: "",
-          submittedBy: "Andy",
+          submittedBy: userName,
           endDate: "",
         }}
         onSubmit={async (values) => {
           const url = SERVER + "/submission";
-          console.log(values);
           try {
-            await axios.post(url, values);
+            const response = await axios.post(url, values);
+            const dealsID = response.data._id;
+            console.log(response.data._id);
+            try {
+              console.log("begin update submission to user");
+              console.log(dealsID, "this is dealsID");
+              console.log(userName, "this is userName");
+              const updateUserSubmissionsUrl = SERVER + "/account/deals";
+              const response = await axios.put(updateUserSubmissionsUrl, {
+                dealsID,
+                userName,
+              });
+              console.log("updated deal submission to user %o", response);
+            } catch (error) {
+              console.log(error.response);
+            }
           } catch (error) {
             error.response.data.msg;
           }

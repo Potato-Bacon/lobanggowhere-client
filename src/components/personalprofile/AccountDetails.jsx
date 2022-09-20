@@ -4,6 +4,7 @@ import axios from "axios";
 import { SERVER } from "../../utils/constants";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
+import dayjs from "dayjs";
 
 function AccountDetails({ select }) {
   const [changePassword, setChangePassword] = useState(false);
@@ -54,7 +55,8 @@ function AccountDetails({ select }) {
             <span>{user.email}</span>
           </div>
           <div>
-            DOB: <span>{user.dateOfBirth}</span>
+            Birthday:{" "}
+            <span>{dayjs(user.dateOfBirth).format("DD-MMM-YYYY")}</span>
           </div>
           <div onClick={handleChangePassword} name="changePassword">
             Change Password

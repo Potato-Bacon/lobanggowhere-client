@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 const Navbar = () => {
-  const { auth } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleNavigate = (e) => {
     const text = e.target.innerText;
@@ -25,7 +25,7 @@ const Navbar = () => {
       <button onClick={handleNavigate}>Home</button>
       <button onClick={handleNavigate}>Admin</button>
       <button onClick={handleNavigate}>Profile</button>
-      {auth?.user ? (
+      {user.userName ? (
         <button onClick={handleNavigate}>Logout</button>
       ) : (
         <button onClick={handleNavigate}>Login</button>
