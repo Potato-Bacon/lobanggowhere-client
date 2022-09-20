@@ -12,6 +12,7 @@ import { SERVER } from "../utils/constants";
 function PersonalProfile() {
   const [select, setSelect] = useState("");
   const [submittedDeals, setSubmittedDeals] = useState({});
+  const [watchList, setWatchList] = useState({});
 
   // const axiosPrivate = useAxiosPrivate();
   // const navigate = useNavigate();
@@ -70,11 +71,12 @@ function PersonalProfile() {
         setSelect={setSelect}
         select={select}
         setSubmittedDeals={setSubmittedDeals}
+        setWatchList={setWatchList}
       />
 
       <AccountDetails select={select} />
       <SubmittedDeals select={select} submittedDeals={submittedDeals} />
-      <Watchlist select={select} />
+      <Watchlist select={select} watchList={watchList} />
     </>
   );
 }

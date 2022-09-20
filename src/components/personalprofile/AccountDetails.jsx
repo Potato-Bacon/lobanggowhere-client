@@ -10,7 +10,6 @@ function AccountDetails({ select }) {
   const [changePassword, setChangePassword] = useState(false);
   const [msg, setMsg] = useState("");
   const { user } = useContext(AuthContext);
-  console.log(user, "test");
 
   const handleChangePassword = () => setChangePassword(true);
 
@@ -18,7 +17,7 @@ function AccountDetails({ select }) {
     const url = SERVER + "/account/verify";
     const userName = user.userName;
     const password = values.currentPassword;
-    console.log(userName, password);
+
     try {
       const response = await axios.post(url, { userName, password });
       console.log(response.data.msg);
