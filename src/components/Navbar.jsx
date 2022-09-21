@@ -36,8 +36,8 @@ const Navbar = () => {
           <button onClick={handleNavigate}>Login</button>
         )}
       </div> */}
-      <div className="navbar bg-base-100">
-        <div className="flex-1">
+      <div className="navbar bg-primary">
+        <div className="flex-1 text-white">
           <a
             onClick={handleNavigate}
             className="btn btn-ghost normal-case text-xl"
