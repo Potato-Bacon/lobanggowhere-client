@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Deals from "../components/home/Deals";
 import Search from "../components/home/Search";
+import SortButton from "../components/home/SortPopular";
 import { SERVER } from "../utils/constants";
 
 function Homepage() {
@@ -18,6 +19,7 @@ function Homepage() {
   return (
     <>
       <h1>Homepage</h1>
+      <SortButton dealsData={dealsData} setDealsData={setDealsData} />
       <button onClick={fetchDeal}>clear</button>
       <Search setDealsData={setDealsData} />
       <div style={{ display: "flex" }}>

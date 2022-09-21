@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ApproveDeals from "../components/adminpage/ApproveDeals";
+import DeleteDeal from "../components/adminpage/DeleteDeal";
 import ListOfDeals from "../components/adminpage/ListOfDeals";
 import { SERVER } from "../utils/constants";
 
@@ -20,6 +21,7 @@ function Admin() {
   return (
     <>
       <h1>Admin</h1>
+      <DeleteDeal setRender={setRender} />
       <ApproveDeals
         select={select}
         setSelect={setSelect}

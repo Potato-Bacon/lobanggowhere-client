@@ -71,6 +71,7 @@ function Registration() {
     }),
 
     onSubmit: async (values) => {
+      console.log(values);
       try {
         await axios.post(url, values, {
           headers: {
@@ -83,7 +84,7 @@ function Registration() {
         };
         setTimeout(navigateToHome, 4000);
       } catch (error) {
-        errorMessage(error.response.data.msg);
+        errorMessage(error?.response?.data?.msg);
       }
     },
   });
