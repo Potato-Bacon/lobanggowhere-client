@@ -11,24 +11,23 @@ const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
         const url = SERVER + `/admin/${id}`;
         await axios.put(url, body);
       };
-      // updateStatus();
+      updateStatus();
 
+      2;
       const current_position = renderList.indexOf(display);
       console.log(current_position);
       console.log(typeof display, "type");
 
-      setRenderList((prev) => {
-        return [...prev.filter((x) => x._id !== display._id)];
-      });
-      if (current_position !== renderList.length) {
-        setDisplay([renderList[current_position]]);
-      } else {
-        setDisplay(renderList[current_position - 1]);
-      }
+      const new_list = structuredClone(renderList).filter(
+        (x) => x._id !== display._id
+      );
+      setRenderList(new_list);
 
-      //   renderList[0].id === display._id
-      //     ? setDisplay(renderList[0])
-      //     : setDisplay(renderList[1]);
+      if (current_position !== new_list.length) {
+        setDisplay(new_list[current_position]);
+      } else {
+        setDisplay(new_list[current_position - 1]);
+      }
     }
   };
   return (
@@ -44,48 +43,48 @@ const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
         >
           <div>
             <img
-              src={display?.img}
+              src={display.img}
               alt="Deals image"
               style={{
                 maxWidth: "300px",
                 maxHeight: "300px",
               }}
             />
-            <h1>{display?.title}</h1>
+            <h1>{display.title}</h1>
           </div>
           <div>
             <h3>
-              Description: <span>{display?.description}</span>
+              Description: <span>{display.description}</span>
             </h3>
             <h3>
               Link to source:{" "}
-              <a href={display?.url} target="_blank" rel="noopener noreferrer">
+              <a href={display.url} target="_blank" rel="noopener noreferrer">
                 view
               </a>
             </h3>
             <h3>
-              Vendor: <span>{display?.vendor}</span>
+              Vendor: <span>{display.vendor}</span>
             </h3>
             <h3>
-              Online/inStore: <span>{display?.onlineAndOrStore}</span>
+              Online/inStore: <span>{display.onlineAndOrStore}</span>
             </h3>
             <h3>
-              Category: <span>{display?.category?.classification}</span>
+              Category: <span>{display.category.classification}</span>
             </h3>
-            {display?.dealsCategory === "custom" && (
+            {display.dealsCategory === "custom" && (
               <h3>
-                Deal : <span>{display?.custom}</span>
+                Deal : <span>{display.custom}</span>
               </h3>
             )}
-            {display?.dealsCategory === "free" && (
+            {display.dealsCategory === "free" && (
               <h3>
                 Deal : <span>Free</span>
               </h3>
             )}
-            {display?.dealsCategory === "discounts" && (
+            {display.dealsCategory === "discounts" && (
               <div>
-                <h3>Previous Price: ${display?.priceBeforeDiscount}</h3>
-                <h3>Discounted Price: ${display?.priceAfterDiscount}</h3>
+                <h3>Previous Price: ${display.priceBeforeDiscount}</h3>
+                <h3>Discounted Price: ${display.priceAfterDiscount}</h3>
               </div>
             )}
           </div>
