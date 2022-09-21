@@ -2,27 +2,38 @@ import axios from "axios";
 import { SERVER } from "../../utils/constants";
 
 /* eslint-disable react/prop-types */
-const ApproveDeals = ({ select, setSelect, setRender, render }) => {
+const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
   const handleApproval = (status) => () => {
-    if (render) {
-      const id = select._id;
+    if (renderList) {
+      const id = display._id;
       const updateStatus = async () => {
         const body = { status };
         const url = SERVER + `/admin/${id}`;
         await axios.put(url, body);
       };
-      updateStatus();
+      // updateStatus();
 
-      setRender((prev) => {
-        return [...prev.filter((x) => x._id !== select._id)];
+      const current_position = renderList.indexOf(display);
+      console.log(current_position);
+      console.log(typeof display, "type");
+
+      setRenderList((prev) => {
+        return [...prev.filter((x) => x._id !== display._id)];
       });
+      if (current_position !== renderList.length) {
+        setDisplay([renderList[current_position]]);
+      } else {
+        setDisplay(renderList[current_position - 1]);
+      }
 
-      render[0].id === select._id ? setSelect(render[0]) : setSelect(render[1]);
+      //   renderList[0].id === display._id
+      //     ? setDisplay(renderList[0])
+      //     : setDisplay(renderList[1]);
     }
   };
   return (
     <>
-      {render.length !== 0 && (
+      {renderList.length !== 0 && (
         <div
           style={{
             border: "10px solid",
@@ -33,48 +44,48 @@ const ApproveDeals = ({ select, setSelect, setRender, render }) => {
         >
           <div>
             <img
-              src={select?.img}
+              src={display?.img}
               alt="Deals image"
               style={{
                 maxWidth: "300px",
                 maxHeight: "300px",
               }}
             />
-            <h1>{select?.title}</h1>
+            <h1>{display?.title}</h1>
           </div>
           <div>
             <h3>
-              Description: <span>{select?.description}</span>
+              Description: <span>{display?.description}</span>
             </h3>
             <h3>
               Link to source:{" "}
-              <a href={select?.url} target="_blank" rel="noopener noreferrer">
+              <a href={display?.url} target="_blank" rel="noopener noreferrer">
                 view
               </a>
             </h3>
             <h3>
-              Vendor: <span>{select?.vendor}</span>
+              Vendor: <span>{display?.vendor}</span>
             </h3>
             <h3>
-              Online/inStore: <span>{select?.onlineAndOrStore}</span>
+              Online/inStore: <span>{display?.onlineAndOrStore}</span>
             </h3>
             <h3>
-              Category: <span>{select?.category?.classification}</span>
+              Category: <span>{display?.category?.classification}</span>
             </h3>
-            {select?.dealsCategory === "custom" && (
+            {display?.dealsCategory === "custom" && (
               <h3>
-                Deal : <span>{select?.custom}</span>
+                Deal : <span>{display?.custom}</span>
               </h3>
             )}
-            {select?.dealsCategory === "free" && (
+            {display?.dealsCategory === "free" && (
               <h3>
                 Deal : <span>Free</span>
               </h3>
             )}
-            {select?.dealsCategory === "discounts" && (
+            {display?.dealsCategory === "discounts" && (
               <div>
-                <h3>Previous Price: ${select?.priceBeforeDiscount}</h3>
-                <h3>Discounted Price: ${select?.priceAfterDiscount}</h3>
+                <h3>Previous Price: ${display?.priceBeforeDiscount}</h3>
+                <h3>Discounted Price: ${display?.priceAfterDiscount}</h3>
               </div>
             )}
           </div>

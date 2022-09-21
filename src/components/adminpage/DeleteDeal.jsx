@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SERVER } from "../../utils/constants";
 import { v4 as uuidv4 } from "uuid";
 
-const DeleteDeal = ({ setRender }) => {
+const DeleteDeal = ({ setRenderList }) => {
   const [renderDelete, setRenderDeal] = useState([]);
   const formik = useFormik({
     initialValues: {
@@ -27,7 +27,7 @@ const DeleteDeal = ({ setRender }) => {
       return [...prev.filter((x) => x._id !== selectedDealId)];
     });
 
-    setRender((prev) => {
+    setRenderList((prev) => {
       return [...prev.filter((x) => x._id !== selectedDealId)];
     });
     const url = `${SERVER}/admin/${selectedDealId}`;

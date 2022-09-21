@@ -4,8 +4,7 @@ import * as Yup from "yup";
 import { SERVER } from "../utils/constants";
 import axios from "axios";
 import AuthContext from "../context/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function Submission() {
@@ -69,10 +68,7 @@ function Submission() {
               console.log("updated deal submission to user %o", response);
               toast.success("Submitted!");
 
-              const navigateToProfile = () => {
-                navigate(`/profile/${user.userName}`);
-              };
-              setTimeout(navigateToProfile, 2000);
+              navigate(`/account`);
             } catch (error) {
               console.log(error.response);
             }
@@ -280,7 +276,6 @@ function Submission() {
           </form>
         )}
       </Formik>
-      <ToastContainer position="bottom-center" />
     </>
   );
 }

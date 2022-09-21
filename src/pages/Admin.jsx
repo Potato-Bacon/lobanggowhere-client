@@ -6,29 +6,29 @@ import ListOfDeals from "../components/adminpage/ListOfDeals";
 import { SERVER } from "../utils/constants";
 
 function Admin() {
-  const [render, setRender] = useState([]);
-  const [select, setSelect] = useState({});
+  const [renderList, setRenderList] = useState([]);
+  const [display, setDisplay] = useState({});
   const url = `${SERVER}/admin`;
 
   useEffect(() => {
     const fetchDeal = async () => {
       const res = await axios.get(url);
-      setRender(res.data);
-      setSelect(res?.data?.[0]);
+      setRenderList(res.data);
+      setDisplay(res?.data?.[0]);
     };
     fetchDeal();
   }, []);
   return (
     <>
       <h1>Admin</h1>
-      <DeleteDeal setRender={setRender} />
+      <DeleteDeal setRender={setRenderList} />
       <ApproveDeals
-        select={select}
-        setSelect={setSelect}
-        setRender={setRender}
-        render={render}
+        display={display}
+        setDisplay={setDisplay}
+        setRenderList={setRenderList}
+        renderList={renderList}
       />
-      <ListOfDeals setSelect={setSelect} render={render} />
+      <ListOfDeals setDisplay={setDisplay} renderList={renderList} />
     </>
   );
 }
