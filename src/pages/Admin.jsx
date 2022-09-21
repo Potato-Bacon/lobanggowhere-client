@@ -21,7 +21,7 @@ function Admin() {
   return (
     <>
       <h1>Admin</h1>
-      <DeleteDeal setRender={setRenderList} />
+      <DeleteDeal setRenderList={setRenderList} />
       <ApproveDeals
         display={display}
         setDisplay={setDisplay}
