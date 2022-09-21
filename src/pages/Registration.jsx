@@ -13,7 +13,7 @@ function Registration() {
   const navigate = useNavigate();
 
   const UserIsRegistered = () =>
-    toast.info("Your account have been created", {
+    toast.success("Your account have been created", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
