@@ -38,7 +38,12 @@ const Navbar = () => {
       </div> */}
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">LobangGoWhere</a>
+          <a
+            onClick={handleNavigate}
+            className="btn btn-ghost normal-case text-xl"
+          >
+            LobangGoWhere
+          </a>
         </div>
         <div className="flex-none gap-2">
           <div className="dropdown dropdown-end">
