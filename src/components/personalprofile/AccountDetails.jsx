@@ -45,7 +45,7 @@ function AccountDetails({ select }) {
       {select === "AccountDetails" && (
         <>
           <h1>Account Details</h1>
-          <img src="" alt="avatar" />
+          <img src="https://placeimg.com/80/80/people" alt="avatar" />
           <div>
             Username :<span>{user.userName}</span>
           </div>
