@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useLocation, Navigate, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
@@ -8,6 +8,7 @@ const RequireAuth = ({ allowedRoles }) => {
   const { auth, setAuth, user, setUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
 
   const accesscall = async () => {
     let response = await axios
@@ -58,21 +59,22 @@ const RequireAuth = ({ allowedRoles }) => {
     }
   };
 
-  const effectRan = useRef(false);
+  // const effectRan = useRef(false);
 
   //* Calling API to validate user, redirect if wrong
   useEffect(() => {
-    if (effectRan.current === false) {
+    console.log("Location Changed")
+    // if (effectRan.current === false) {
       const calling = async () => {
         console.log("Starting jwt verification in useeffect requireAuth");
         accesscall();
       };
       calling();
-      return () => {
-        effectRan.current = true;
-      };
-    }
-  }, []);
+      // return () => {
+      //   effectRan.current = true;
+      // };
+    // }
+  }, [location]);
 
   const rolesCheck = user.roles;
 
