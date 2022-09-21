@@ -3,18 +3,13 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import { SERVER } from "../../utils/constants";
 
-function NavbarProfile({ setSelect, setSubmittedDeals, setWatchList }) {
+function NavbarProfile({ setSelect, setWatchList }) {
   const { user } = useContext(AuthContext);
   const handleClick = async (options) => {
     if (options === "AccountDetails") {
       setSelect("AccountDetails");
     } else if (options === "SubmittedDeals") {
       setSelect("SubmittedDeals");
-      const submissions = user.submissions;
-      console.log("submissions %o", submissions);
-      const url = SERVER + `/account/submitteddeals`;
-      const data = await axios.post(url, submissions);
-      setSubmittedDeals(data);
     } else if (options === "Watchlist") {
       setSelect("Watchlist");
       const watchList = user.watchList;

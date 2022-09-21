@@ -9,8 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Submission() {
   const [categories, setCategories] = useState([]);
-  const { user } = useContext(AuthContext);
-  const [submission, setSubmission] = useState();
+  const { user, setSubmittedDeals, submittedDeals } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -52,6 +51,8 @@ function Submission() {
           const url = SERVER + "/submission";
           try {
             const response = await axios.post(url, values);
+            const test = response.data;
+            setSubmittedDeals((prev) => [...prev, test]);
             const dealsID = response.data._id;
             console.log(response.data._id);
             try {

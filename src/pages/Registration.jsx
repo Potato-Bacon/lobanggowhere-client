@@ -7,7 +7,7 @@ import { SERVER } from "../utils/constants";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const url = `${SERVER}register`;
+const url = `${SERVER}/register`;
 
 function Registration() {
   const navigate = useNavigate();
