@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { SERVER } from "../utils/constants";
 import axios from "axios";
 import AuthContext from "../context/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Submission() {
   const [categories, setCategories] = useState([]);
@@ -62,6 +64,7 @@ function Submission() {
                 userName,
               });
               console.log("updated deal submission to user %o", response);
+              toast.success("Submitted!");
             } catch (error) {
               console.log(error.response);
             }
@@ -100,10 +103,9 @@ function Submission() {
             is: (value) => value && value === "custom",
             then: Yup.string().required("Please fill in details"),
           }),
-          endDate: Yup.date().min(
-            today,
-            "Deal must be valid for more than a day"
-          ),
+          endDate: Yup.date()
+            .min(today, "Deal must be valid for more than a day")
+            .required("Required"),
         })}
       >
         {({
@@ -261,7 +263,7 @@ function Submission() {
                 {errors.startDate && touched.startDate && errors.startDate}
               </label>
               <label>
-                End Date
+                End Date *
                 <Field type="date" name="endDate" value={values.endDate} />
                 {errors.endDate && touched.endDate && errors.endDate}
               </label>
@@ -270,6 +272,7 @@ function Submission() {
           </form>
         )}
       </Formik>
+      <ToastContainer position="bottom-center" />
     </>
   );
 }

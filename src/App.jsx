@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RequireAuth from "./components/RequireAuth";
 import Layout from "./Layout";
@@ -14,8 +12,6 @@ import Submission from "./pages/Submission";
 import Unauthorized from "./pages/Unauthorized";
 
 function App() {
-  const [publicProfile, setPublicProfile] = useState({});
-
   return (
     <BrowserRouter>
       <Routes>
@@ -23,16 +19,10 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route
-            path="/deals/:id"
-            element={<DealDetails setPublicProfile={setPublicProfile} />}
-          />
+          <Route path="/deals/:id" element={<DealDetails />} />
           <Route path="/account/:id" element={<PublicProfile />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
-          <Route
-            path="/profile/:username"
-            element={<PublicProfile publicProfile={publicProfile} />}
-          />
+          <Route path="/profile/:username" element={<PublicProfile />} />
 
           {/* Requires logged in account in order to access paths */}
           <Route element={<RequireAuth allowedRoles={["User"]} />}>

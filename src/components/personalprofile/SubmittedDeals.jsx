@@ -8,6 +8,7 @@ function SubmittedDeals({ select, submittedDeals }) {
           {submittedDeals?.data?.map((deal) => (
             <>
               <div key={deal._id}>
+                <h3>{deal.title}</h3>
                 <img
                   style={{
                     minHeight: "16rem",
@@ -19,8 +20,7 @@ function SubmittedDeals({ select, submittedDeals }) {
                   src={deal.img}
                   alt="image"
                 />
-                <div>{deal.title}</div>
-                <div>{deal.submittedStatus}</div>
+                <h3>Status: {deal.submittedStatus}</h3>
               </div>
             </>
           ))}

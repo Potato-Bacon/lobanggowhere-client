@@ -4,19 +4,13 @@ import { SERVER } from "../utils/constants";
 import { Link, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
 
-function DealDetails({ setPublicProfile }) {
+function DealDetails() {
   const { user, setUser } = useContext(AuthContext);
   let { id } = useParams();
 
   const [render, setRender] = useState("");
   const [likeCount, setLikeCount] = useState("");
   const url = `${SERVER}/deals`;
-
-  const handlePublicProfile = async () => {
-    const url = SERVER + `/profile/${render.submittedBy}`;
-    const data = await axios.get(url);
-    setPublicProfile(data);
-  };
 
   useEffect(() => {
     const fetchDeal = async () => {
@@ -158,10 +152,7 @@ function DealDetails({ setPublicProfile }) {
         )}
         <h3>
           Submitted by :
-          <Link
-            onClick={handlePublicProfile}
-            to={`/profile/${render.submittedBy}`}
-          >
+          <Link to={`/profile/${render.submittedBy}`}>
             {render.submittedBy}
           </Link>
         </h3>
