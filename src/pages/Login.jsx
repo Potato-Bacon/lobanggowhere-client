@@ -3,11 +3,10 @@ import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../utils/constants";
-import AuthContext from "../context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const { setUser } = useContext(AuthContext);
-  const { setAuth } = useAuth();
+  const { setAuth, setUser } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -50,6 +49,13 @@ const Login = () => {
       setUserName("");
       setPassword("");
       navigate(from, { replace: true });
+      toast.info(
+        <p style={{ lineHeight: 1, margin: "0 auto" }}>
+          Login Successful
+          <br />
+          Welcome back {userName}
+        </p>
+      );
     } catch (err) {
       console.log("Error here");
       if (!err.response) {

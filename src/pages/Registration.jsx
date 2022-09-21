@@ -4,47 +4,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { SERVER } from "../utils/constants";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
-const url = `${SERVER}register`;
+const url = `${SERVER}/register`;
 
 function Registration() {
   const navigate = useNavigate();
 
-  const UserIsRegistered = () =>
-    toast.info("Your account have been created", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    });
+  const UserIsRegistered = () => toast.info("Your account have been created");
 
   const errorMessage = (errorMessage) => {
     if (errorMessage === "Please use a unique username") {
-      return toast.info("Please use a unique username", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
+      return toast.info("Please use a unique username");
     }
     if (errorMessage === "Email already in use") {
-      return toast.info("Email already in use", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
+      return toast.info("Email already in use");
     }
   };
   const formik = useFormik({
@@ -79,10 +53,7 @@ function Registration() {
           },
         });
         UserIsRegistered();
-        const navigateToHome = () => {
-          navigate("/login");
-        };
-        setTimeout(navigateToHome, 4000);
+        navigate("/login");
       } catch (error) {
         errorMessage(error?.response?.data?.msg);
       }
@@ -166,18 +137,6 @@ function Registration() {
 
         <button type="submit">Submit</button>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <ToastContainer />
     </>
   );
 }

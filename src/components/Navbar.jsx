@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
+
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleNavigate = (e) => {
     const text = e.target.innerText;
-    if (text === "Home" || text === "Logout") {
+    if (text === "Home") {
       return navigate("/");
     }
     if (text === "Admin") {
@@ -17,6 +18,9 @@ const Navbar = () => {
     }
     if (text === "Login") {
       return navigate("/login");
+    }
+    if (text === "Logout") {
+      return navigate("/logout");
     }
   };
   return (
