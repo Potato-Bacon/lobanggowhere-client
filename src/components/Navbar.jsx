@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
@@ -13,9 +13,7 @@ const Navbar = () => {
     if (text === "Admin") {
       return navigate("/admin");
     }
-    if (text === "Profile") {
-      return navigate("/account");
-    }
+
     if (text === "Login") {
       return navigate("/login");
     }
@@ -23,6 +21,7 @@ const Navbar = () => {
       return navigate("/logout");
     }
   };
+
   return (
     <>
       {/* <div style={{ backgroundColor: "red", display: "flex" }}>
@@ -57,10 +56,10 @@ const Navbar = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <a onClick={handleNavigate} className="justify-between">
+                <Link to={`/account`} className="justify-between">
                   Profile
                   <span className="badge">New</span>
-                </a>
+                </Link>
               </li>
               <li>
                 <a onClick={handleNavigate}>Admin</a>
