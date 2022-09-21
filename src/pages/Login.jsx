@@ -72,50 +72,63 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <p
-        ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
-        aria-live="assertive"
-      >
-        {errMsg}
-      </p>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="userName">Username: </label>
-        <input
-          type="text"
-          id="userName"
-          ref={userRef}
-          autoComplete="off"
-          onChange={(e) => setUserName(e.target.value)}
-          value={userName}
-          required
-        />
-
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
-        <button>Sign In</button>
-      </form>
-      <p>
-        Need an Account?
-        <br />
-        <span
-          style={{ textDecoration: "Underline" }}
-          onClick={() => {
-            console.log("Navigating to register");
-            navigate("/register");
-          }}
+    <div className="text-center">
+      <div className="flex items-center card w-96 h-100 bg-base-100 shadow-xl text-center ">
+        <p
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
         >
-          Sign Up
-        </span>
-      </p>
-    </section>
+          {errMsg}
+        </p>
+        <form onSubmit={handleSubmit} className={"mt-11"}>
+          <div className="flex items-center justify-center">
+            <label htmlFor="userName" className="card-body text-xl m-0 ">
+              Username:{" "}
+            </label>
+            <input
+              type="text"
+              id="userName"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setUserName(e.target.value)}
+              value={userName}
+              required
+              placeholder="Enter username ..."
+              className="input input-bordered input-primary w-full max-w-xs"
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <label htmlFor="password" className="card-body text-xl m-0 pr-4">
+              Password:{" "}
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+              placeholder="Enter password ..."
+              className="input input-bordered input-primary w-full max-w-xs"
+            />
+          </div>
+          <button className="btn btn-primary ">Sign In</button>
+        </form>
+        <p className="card-body">
+          Need an Account?
+          <br />
+          <span
+            onClick={() => {
+              console.log("Navigating to register");
+              navigate("/register");
+            }}
+            className="card-body underline"
+          >
+            Sign Up
+          </span>
+        </p>
+      </div>
+    </div>
   );
 };
 
