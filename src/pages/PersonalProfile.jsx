@@ -5,7 +5,7 @@ import SubmittedDeals from "../components/personalprofile/SubmittedDeals";
 import Watchlist from "../components/personalprofile/Watchlist";
 
 function PersonalProfile() {
-  const [select, setSelect] = useState("");
+  const [select, setSelect] = useState("AccountDetails");
   const [watchList, setWatchList] = useState({});
 
   return (
