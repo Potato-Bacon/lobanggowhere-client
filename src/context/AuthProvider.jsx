@@ -8,11 +8,20 @@ export const AuthProvider = ({ children }) => {
     // userName: "Jake",
     // password: 123,
     // roles: ["User"],
-  }
-  );
+  });
+  const [submittedDeals, setSubmittedDeals] = useState([]);
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth, user, setUser }}>
+    <AuthContext.Provider
+      value={{
+        auth,
+        setAuth,
+        user,
+        setUser,
+        submittedDeals,
+        setSubmittedDeals,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -6,11 +6,12 @@ import axios from "axios";
 import AuthContext from "../context/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function Submission() {
   const [categories, setCategories] = useState([]);
-  const { user } = useContext(AuthContext);
-  const [submission, setSubmission] = useState();
+  const { user, setSubmittedDeals, submittedDeals } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -52,6 +53,8 @@ function Submission() {
           const url = SERVER + "/submission";
           try {
             const response = await axios.post(url, values);
+            const test = response.data;
+            setSubmittedDeals((prev) => [...prev, test]);
             const dealsID = response.data._id;
             console.log(response.data._id);
             try {
@@ -65,6 +68,11 @@ function Submission() {
               });
               console.log("updated deal submission to user %o", response);
               toast.success("Submitted!");
+
+              const navigateToProfile = () => {
+                navigate(`/profile/${user.userName}`);
+              };
+              setTimeout(navigateToProfile, 2000);
             } catch (error) {
               console.log(error.response);
             }

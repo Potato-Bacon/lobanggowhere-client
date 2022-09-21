@@ -6,7 +6,6 @@ import Watchlist from "../components/personalprofile/Watchlist";
 
 function PersonalProfile() {
   const [select, setSelect] = useState("");
-  const [submittedDeals, setSubmittedDeals] = useState({});
   const [watchList, setWatchList] = useState({});
 
   return (
@@ -16,12 +15,11 @@ function PersonalProfile() {
       <NavbarProfile
         setSelect={setSelect}
         select={select}
-        setSubmittedDeals={setSubmittedDeals}
         setWatchList={setWatchList}
       />
 
       <AccountDetails select={select} />
-      <SubmittedDeals select={select} submittedDeals={submittedDeals} />
+      <SubmittedDeals select={select} />
       <Watchlist select={select} watchList={watchList} />
     </>
   );
