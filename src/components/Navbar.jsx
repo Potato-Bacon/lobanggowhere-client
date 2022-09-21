@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleNavigate = (e) => {
     const text = e.target.innerText;
-    if (text === "Home") {
+    if (text === "LobangGoWhere") {
       return navigate("/");
     }
     if (text === "Admin") {
