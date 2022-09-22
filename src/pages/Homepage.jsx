@@ -6,6 +6,8 @@ import Search from "../components/home/Search";
 import SortButton from "../components/home/SortPopular";
 import { SERVER } from "../utils/constants";
 
+import merlionimage from "/src/images/merlionbay2.png"
+
 function Homepage() {
   const [dealsData, setDealsData] = useState([]);
   const fetchDeal = async () => {
@@ -30,7 +32,7 @@ function Homepage() {
         style={{
           width: "100%",
           height: "65vw",
-          backgroundImage: "url(/src/images/merlionbay2.png)",
+          backgroundImage: `url("${merlionimage}")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           objectFit: "fill",
