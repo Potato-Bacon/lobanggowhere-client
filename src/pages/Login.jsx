@@ -83,7 +83,7 @@ const Login = () => {
         </p>
         <form onSubmit={handleSubmit} className={"mt-11"}>
           <div className="flex items-center justify-center">
-            <label htmlFor="userName" className="card-body text-xl m-0 ">
+            <label htmlFor="userName" className="card-body text-xl m-0 pr-2">
               Username:{" "}
             </label>
             <input
@@ -112,9 +112,9 @@ const Login = () => {
               className="input input-bordered input-primary w-full max-w-xs"
             />
           </div>
-          <button className="btn btn-primary ">Sign In</button>
+          <button className="btn btn-primary mt-1.5">Sign In</button>
         </form>
-        <p className="card-body">
+        <p className="card-body pb-0.5">
           Need an Account?
           <br />
           <span
@@ -122,7 +122,7 @@ const Login = () => {
               console.log("Navigating to register");
               navigate("/register");
             }}
-            className="card-body underline"
+            className="card-body underline pt-1.5 mb-3.5"
           >
             Sign Up
           </span>
