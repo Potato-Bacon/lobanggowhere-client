@@ -67,17 +67,14 @@ function Registration() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
+        minHeight: "95vh",
       }}
     >
       <div className="flex-col flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
-        <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+        <h1 className="mt-6 text-2xl font-bold text-black sm:text-3xl md:text-4xl">
           Welcome to LobangGoWhere 💸
         </h1>
 
-        <p className="mt-4 leading-relaxed text-gray-500 w-96">
-          Ut eros ante, blandit vel tincidunt at, tristique ut turpis. Donec
-          elit ligula, suscipit id magna sed, fermentum dictum ex
-        </p>
         <form
           onSubmit={formik.handleSubmit}
           className="mt-8 grid grid-cols-6 gap-6"
@@ -85,7 +82,7 @@ function Registration() {
           <div className="col-span-6 sm:col-span-3">
             <label
               htmlFor="userName"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               Username{" "}
             </label>
@@ -96,7 +93,7 @@ function Registration() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.userName}
-              className="pl-2 w-full mt-1 h-8 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+              className="pl-2 w-full mt-1 h-8 text-sm text-black bg-white border-black rounded-md shadow-sm"
             />
             {formik.touched.userName && formik.errors.userName ? (
               <span>{formik.errors.userName}</span>
@@ -106,7 +103,7 @@ function Registration() {
           <div className="col-span-6 sm:col-span-3">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               Password{" "}
             </label>
@@ -117,7 +114,7 @@ function Registration() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
-              className="pl-2 w-full mt-1 h-8 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+              className="pl-2 w-full mt-1 h-8 text-sm text-black bg-white border-black rounded-md shadow-sm"
             />
             {formik.touched.password && formik.errors.password ? (
               <span>{formik.errors.password}</span>
@@ -126,7 +123,7 @@ function Registration() {
           <div className="col-span-6 sm:col-span-3 ">
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               Confirm Password{" "}
             </label>
@@ -137,7 +134,7 @@ function Registration() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.confirmPassword}
-              className=" pl-2 w-full h-8 mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+              className=" pl-2 w-full h-8 mt-1 text-sm text-black bg-white border-black rounded-md shadow-sm"
             />
             {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
               <span>{formik.errors.confirmPassword}</span>
@@ -146,7 +143,7 @@ function Registration() {
           <div className="col-span-6 sm:col-span-3">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               Email{" "}
             </label>
@@ -157,7 +154,7 @@ function Registration() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
-              className="pl-2 w-full h-8 mt-1 text-m text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+              className="pl-2 w-full h-8 mt-1 text-m text-black bg-white border-black rounded-md shadow-sm"
             />
             {formik.touched.email && formik.errors.email ? (
               <span>{formik.errors.email}</span>
@@ -166,7 +163,7 @@ function Registration() {
           <div className="col-span-6 sm:col-span-3">
             <label
               htmlFor="dateOfBirth"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-black"
             >
               Date of Birth{" "}
             </label>
@@ -189,10 +186,10 @@ function Registration() {
                 type="checkbox"
                 id="MarketingAccept"
                 name="marketing_accept"
-                className="w-5 h-5 bg-white border-gray-200 rounded-md shadow-sm"
+                className="w-5 h-5 bg-white border-black rounded-md shadow-sm "
               />
 
-              <span className="text-sm text-gray-700">
+              <span className="text-base text-black">
                 I want to receive emails about events, product updates and
                 company announcements.
               </span>
@@ -200,12 +197,12 @@ function Registration() {
           </div>
 
           <div className="col-span-6">
-            <p className="text-sm text-gray-500">
+            <p className="text-base text-black">
               By creating an account, you agree to our
               <a
                 href="#"
                 disabled="disabled"
-                className="text-gray-700 underline px-1"
+                className="text-black underline px-1"
               >
                 terms and conditions
               </a>
@@ -213,7 +210,7 @@ function Registration() {
               <a
                 href="#"
                 disabled="disabled"
-                className="text-gray-700 underline pl-1"
+                className="text-black underline pl-1"
               >
                 privacy policy
               </a>
@@ -223,14 +220,14 @@ function Registration() {
           <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
             <button
               type="submit"
-              className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+              className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
             >
               Create an Account
             </button>
 
-            <p className="mt-4 text-sm text-gray-500 sm:mt-0">
+            <p className="mt-4 text-sm text-black sm:mt-0">
               Already have an account?
-              <Link to="/login" className="text-gray-700 underline pl-2">
+              <Link to="/login" className="text-black underline pl-2">
                 Log in
               </Link>
             </p>

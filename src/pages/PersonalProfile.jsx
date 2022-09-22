@@ -16,6 +16,7 @@ function PersonalProfile() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
+        minHeight: "95vh",
       }}
     >
       <div className="font-semibold">My Profile</div>

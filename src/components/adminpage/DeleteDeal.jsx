@@ -39,7 +39,7 @@ const DeleteDeal = ({ setRenderList }) => {
   };
   return (
     <>
-      <div className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl mb-8">
+      <div className="flex-wrap px-8 py-6  mb-8  shadow-2xl bg-white bg-opacity-20 backdrop-blur-md rounded-xl drop-shadow-lg">
         <h1 className="text-xl">Delete Deals by title ...</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="flex py-2">
@@ -58,7 +58,7 @@ const DeleteDeal = ({ setRenderList }) => {
 
             <button
               type="submit"
-              className=" ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+              className=" ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
             >
               Search
             </button>

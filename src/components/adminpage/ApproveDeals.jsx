@@ -32,7 +32,7 @@ const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
   };
   return (
     <div>
-      <div className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl ">
+      <div className="flex-wrap px-8 py-6 shadow-2xl bg-white bg-opacity-20 backdrop-blur-md rounded-xl drop-shadow-lg ">
         {renderList.length !== 0 && (
           <div
             style={{
@@ -88,13 +88,13 @@ const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
             </div>
             <div className="flex justify-self-center mt-3">
               <button
-                className=" px-7 mx-4 ml-1 inline-block text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+                className=" px-7 mx-4 ml-1 inline-block text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
                 onClick={handleApproval("Approve")}
               >
                 Approve
               </button>
               <button
-                className="ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+                className="ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
                 onClick={handleApproval("Reject")}
               >
                 Reject

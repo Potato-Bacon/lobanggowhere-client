@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -79,19 +79,16 @@ const Login = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
+        minHeight: "95vh",
       }}
     >
       <div className="flex-col flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
-        <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+        <h1 className="mt-6 text-2xl font-bold text-black sm:text-3xl md:text-4xl">
           Welcome to LobangGoWhere 💸
         </h1>
 
-        <p className="mt-4 leading-relaxed text-gray-500 w-96">
-          Ut eros ante, blandit vel tincidunt at, tristique ut turpis. Donec
-          elit ligula, suscipit id magna sed, fermentum dictum ex
-        </p>
         <div className="flex justify-center ">
-          <div className="flex items-center card w-96 h-100 bg-base-100 text-center ">
+          <div className="flex items-center card w-96 h-100  text-center ">
             <p
               ref={errRef}
               className={errMsg ? "errmsg" : "offscreen"}
@@ -103,10 +100,11 @@ const Login = () => {
               <div className="flex items-center justify-center">
                 <label
                   htmlFor="userName"
-                  className="block text-lg font-medium text-gray-700 pr-1"
+                  className="block text-lg font-medium text-black pr-1"
                 >
                   Username:{" "}
                 </label>
+
                 <input
                   type="text"
                   id="userName"
@@ -116,13 +114,13 @@ const Login = () => {
                   value={userName}
                   required
                   placeholder="Enter username ..."
-                  className="pl-2 w-full mt-1 h-8 text-base text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+                  className="pl-2 w-full mt-1 h-8 text-base text-black bg-white rounded-xl drop-shadow-lg bg-opacity-20 backdrop-blur-md"
                 />
               </div>
               <div className="flex items-center justify-center py-4">
                 <label
                   htmlFor="password"
-                  className="block text-lg font-medium text-gray-700 pr-1"
+                  className="block text-lg font-medium text-black pr-1"
                 >
                   Password:{" "}
                 </label>
@@ -133,15 +131,15 @@ const Login = () => {
                   value={password}
                   required
                   placeholder="Enter password ..."
-                  className="pl-2 w-full mt-1 h-8 text-base text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+                  className="pl-2 w-full mt-1 h-8 text-base text-black  bg-white rounded-xl drop-shadow-lg bg-opacity-20 backdrop-blur-md"
                 />
               </div>
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4 mt-3">
-                <button className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary">
+                <button className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary">
                   Sign In
                 </button>
 
-                <p className="mt-4 text-sm text-gray-500 sm:mt-0">
+                <p className="mt-4 text-sm text-black sm:mt-0">
                   Need an Account?
                 </p>
                 <p
@@ -149,7 +147,7 @@ const Login = () => {
                     console.log("Navigating to register");
                     navigate("/register");
                   }}
-                  className="text-gray-700 underline "
+                  className="text-black underline "
                 >
                   Sign Up
                 </p>

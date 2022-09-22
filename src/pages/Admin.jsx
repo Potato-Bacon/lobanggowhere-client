@@ -26,6 +26,7 @@ function Admin() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
+        minHeight: "95vh",
       }}
     >
       <div className="flex items-start justify-evenly">

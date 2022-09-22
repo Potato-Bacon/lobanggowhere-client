@@ -47,7 +47,7 @@ function AccountDetails({ select }) {
           <div className="m-8">
             <h1 className="m-8">My Account</h1>
             <img
-              className="m-8"
+              className="m-8 "
               src="https://placeimg.com/80/80/people"
               alt="avatar"
             />
