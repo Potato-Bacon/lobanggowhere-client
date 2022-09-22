@@ -11,7 +11,7 @@ const Page404 = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
+        minHeight: "100vh",
       }}
     >
       <h1>404</h1>

@@ -23,10 +23,16 @@ function NavbarProfile({ setSelect, setWatchList }) {
     <>
       <ul className="menu w-56 p-2 shadow-2xl bg-white bg-opacity-20 backdrop-blur-md rounded-xl drop-shadow-lg">
         <li className="m-8">
-          <a onClick={() => handleClick("AccountDetails")}>Account Details</a>
+          <a
+            className="font-serif font-bold"
+            onClick={() => handleClick("AccountDetails")}
+          >
+            Account Details
+          </a>
         </li>
         <li className="m-8">
           <a
+            className="font-serif font-bold"
             onClick={() => {
               handleClick("SubmittedDeals");
             }}
@@ -35,7 +41,12 @@ function NavbarProfile({ setSelect, setWatchList }) {
           </a>
         </li>
         <li className="m-8">
-          <a onClick={() => handleClick("Watchlist")}>Watchlist</a>
+          <a
+            className="font-serif font-bold"
+            onClick={() => handleClick("Watchlist")}
+          >
+            Watchlist
+          </a>
         </li>
       </ul>
 

@@ -29,12 +29,12 @@ function Homepage() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
+        minHeight: "100vh",
       }}
     >
       <div
         style={{
-          width: "100vw",
+          width: "99vw",
           height: "100vh",
           display: "flex",
           flexDirection: "column",
@@ -43,6 +43,7 @@ function Homepage() {
       >
         <div
           style={{
+            marginTop: "7vh",
             width: "100%",
             height: "65vw",
             backgroundImage: `url("${merlionimage}")`,

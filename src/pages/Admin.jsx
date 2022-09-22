@@ -26,19 +26,21 @@ function Admin() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
+        minHeight: "100vh",
       }}
     >
-      <div className="flex items-start justify-evenly">
-        <ApproveDeals
-          display={display}
-          setDisplay={setDisplay}
-          setRenderList={setRenderList}
-          renderList={renderList}
-        />
-        <div className="flex-col">
-          <DeleteDeal setRenderList={setRenderList} />
-          <ListOfDeals setDisplay={setDisplay} renderList={renderList} />
+      <div className="flex items-center justify-center">
+        <div className="mt-28 flex items-start justify-evenly gap-20">
+          <ApproveDeals
+            display={display}
+            setDisplay={setDisplay}
+            setRenderList={setRenderList}
+            renderList={renderList}
+          />
+          <div className="flex-col">
+            <DeleteDeal setRenderList={setRenderList} />
+            <ListOfDeals setDisplay={setDisplay} renderList={renderList} />
+          </div>
         </div>
       </div>
     </div>

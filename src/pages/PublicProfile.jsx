@@ -26,7 +26,7 @@ function PublicProfile() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
+        minHeight: "100vh",
       }}
     >
       <div className="font-semibold">Public Profile</div>

@@ -7,7 +7,7 @@ function Watchlist({ select, watchList }) {
     <>
       {select === "Watchlist" && (
         <>
-          <div className="grid grid-cols-2 gap-10 ml-8 ">
+          <div className="grid grid-cols-2 gap-10 ml-8 mr-8">
             {watchList?.data?.map((deal) => (
               <div
                 key={uuidv4()}

@@ -89,7 +89,7 @@ function DealDetails() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
+        minHeight: "100vh",
       }}
     >
       <div className="flex justify-evenly pt-14 items-start">

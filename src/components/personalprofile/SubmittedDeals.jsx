@@ -28,7 +28,7 @@ function SubmittedDeals({ select }) {
   return (
     <>
       {select === "SubmittedDeals" && (
-        <div className="grid grid-cols-2 gap-10 ml-10 ">
+        <div className="grid grid-cols-2 gap-10 ml-10 mr-10 ">
           {submittedDeals?.map((deal) => (
             <div
               key={uuidv4()}

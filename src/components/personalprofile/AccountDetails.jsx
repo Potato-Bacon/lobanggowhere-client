@@ -44,7 +44,7 @@ function AccountDetails({ select }) {
     <>
       {select === "AccountDetails" && (
         <>
-          <div className="m-8">
+          <div className="m-8 bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl font-serif font-bold">
             <h1 className="ml-8 text-2xl">My Account</h1>
             {/* <img
               className="m-8 "

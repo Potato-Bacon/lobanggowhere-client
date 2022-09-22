@@ -23,9 +23,9 @@ const Deals = ({ dealsData }) => {
               src={deal.img}
               alt="Deal img"
             />
-            <h3 className="m-2 truncate text-xl ">{deal.title}</h3>
+            <h3 className="m-2 truncate text-xl font-bold ">{deal.title}</h3>
             <span className="ml-2 pb-2 font-semibold">
-              {deal.likes.length} likes
+              {deal.likes.length} Likes ♥
             </span>
           </div>
         ))}
@@ -35,7 +35,7 @@ const Deals = ({ dealsData }) => {
         onClick={() => navigate(`/submission`)}
         className="pb-1 ml-1 inline-block px-5 text-lg font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary fixed bottom-4"
       >
-        Share a deal
+        Share Lobang
       </button>
     </>
   );

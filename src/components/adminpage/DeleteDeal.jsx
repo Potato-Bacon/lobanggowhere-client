@@ -40,7 +40,7 @@ const DeleteDeal = ({ setRenderList }) => {
   return (
     <>
       <div className="flex-wrap px-8 py-6  mb-8  shadow-2xl bg-white bg-opacity-20 backdrop-blur-md rounded-xl drop-shadow-lg">
-        <h1 className="text-xl">Delete Deals by title ...</h1>
+        <h1 className="text-xl font-serif font-bold">Delete Deals by title ...</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="flex py-2">
             <label
@@ -65,7 +65,7 @@ const DeleteDeal = ({ setRenderList }) => {
           </div>
         </form>
         <div>
-          <ol className="list-decimal ml-3">
+          <ol className="list-decimal ml-3 font-serif font-bold">
             {renderDelete.map((x) => {
               return (
                 <li key={uuidv4()}>

@@ -75,84 +75,92 @@ const Login = () => {
   return (
     <div
       style={{
-        minHeight: "95vh",
+        minHeight: "100vh",
         backgroundImage: `url("${background}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
       }}
     >
-      <div className="flex-col flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
-        <h1 className="mt-6 text-2xl font-bold text-black sm:text-3xl md:text-4xl">
-          Welcome to LobangGoWhere 💸
-        </h1>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div className="my-10 flex-col flex items-center justify-center bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
+          <h1 className="mt-6 text-2xl font-bold text-black sm:text-3xl md:text-4xl">
+            Welcome to LobangGoWhere 💸
+          </h1>
 
-        <div className="flex justify-center ">
-          <div className="flex items-center card w-96 h-100  text-center ">
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <form onSubmit={handleSubmit} className={"mt-8"}>
-              <div className="flex items-center justify-center">
-                <label
-                  htmlFor="userName"
-                  className="block text-lg font-medium text-black pr-1"
-                >
-                  Username:{" "}
-                </label>
+          <div className="flex justify-center ">
+            <div className="flex items-center card w-96 h-100  text-center ">
+              <p
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live="assertive"
+              >
+                {errMsg}
+              </p>
+              <form onSubmit={handleSubmit} className={"mt-8"}>
+                <div className="flex items-center justify-center">
+                  <label
+                    htmlFor="userName"
+                    className="block text-lg font-medium text-black pr-1"
+                  >
+                    Username:{" "}
+                  </label>
 
-                <input
-                  type="text"
-                  id="userName"
-                  ref={userRef}
-                  autoComplete="off"
-                  onChange={(e) => setUserName(e.target.value)}
-                  value={userName}
-                  required
-                  placeholder="Enter username ..."
-                  className="pl-2 w-full mt-1 h-8 text-base text-black bg-white rounded-xl drop-shadow-lg bg-opacity-20 backdrop-blur-md"
-                />
-              </div>
-              <div className="flex items-center justify-center py-4">
-                <label
-                  htmlFor="password"
-                  className="block text-lg font-medium text-black pr-1"
-                >
-                  Password:{" "}
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  required
-                  placeholder="Enter password ..."
-                  className="pl-2 w-full mt-1 h-8 text-base text-black  bg-white rounded-xl drop-shadow-lg bg-opacity-20 backdrop-blur-md"
-                />
-              </div>
-              <div className="col-span-6 sm:flex sm:items-center sm:gap-4 mt-3">
-                <button className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary">
-                  Sign In
-                </button>
+                  <input
+                    type="text"
+                    id="userName"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setUserName(e.target.value)}
+                    value={userName}
+                    required
+                    placeholder="Enter username ..."
+                    className="pl-2 w-full mt-1 h-8 text-base text-black bg-white rounded-xl drop-shadow-lg bg-opacity-20 backdrop-blur-md"
+                  />
+                </div>
+                <div className="flex items-center justify-center py-4">
+                  <label
+                    htmlFor="password"
+                    className="block text-lg font-medium text-black pr-1"
+                  >
+                    Password:{" "}
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
+                    placeholder="Enter password ..."
+                    className="pl-2 w-full mt-1 h-8 text-base text-black  bg-white rounded-xl drop-shadow-lg bg-opacity-20 backdrop-blur-md"
+                  />
+                </div>
+                <div className="col-span-6 sm:flex sm:items-center sm:gap-4 mt-3">
+                  <button className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary">
+                    Sign In
+                  </button>
 
-                <p className="mt-4 text-sm text-black sm:mt-0">
-                  Need an Account?
-                </p>
-                <p
-                  onClick={() => {
-                    console.log("Navigating to register");
-                    navigate("/register");
-                  }}
-                  className="text-black underline "
-                >
-                  Sign Up
-                </p>
-              </div>
-            </form>
+                  <p className="mt-4 text-sm text-black sm:mt-0">
+                    Need an Account?
+                  </p>
+                  <p
+                    onClick={() => {
+                      console.log("Navigating to register");
+                      navigate("/register");
+                    }}
+                    className="text-black underline "
+                  >
+                    Sign Up
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

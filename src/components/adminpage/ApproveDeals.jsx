@@ -46,32 +46,32 @@ const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
                 alt="Deals image"
                 className="max-w-xs max-h-80"
               />
-              <h1 className="text-2xl">{display.title}</h1>
+              <h1 className="text-2xl font-sans font-bold">{display.title}</h1>
             </div>
             <div className="text-lg">
               <h3>
-                Description:{" "}
+                <span className="font-serif font-bold">Description: </span>
                 <span className="text-base">{display.description}</span>
               </h3>
               <h3>
-                Link to source:{" "}
+                <span className="font-serif font-bold">Link to source: </span>
                 <a href={display.url} target="_blank" rel="noopener noreferrer">
                   view
                 </a>
               </h3>
               <h3>
-                Vendor: <span className="text-base">{display.vendor}</span>
+              <span className="font-serif font-bold">Vendor: </span> <span className="text-base">{display.vendor}</span>
               </h3>
               <h3>
-                Online/inStore:{" "}
+                <span className="font-serif font-bold">Online/inStore: </span>
                 <span className="text-base">{display.onlineAndOrStore}</span>
               </h3>
               <h3>
-                Category: <span>{display.category.classification}</span>
+              <span className="font-serif font-bold">Category: </span> <span>{display.category.classification}</span>
               </h3>
               {display.dealsCategory === "custom" && (
                 <h3>
-                  Deal: <span className="text-base">{display.custom}</span>
+                  <span className="font-serif font-bold">Deal: </span> <span className="text-base">{display.custom}</span>
                 </h3>
               )}
               {display.dealsCategory === "free" && (

@@ -16,24 +16,31 @@ function PersonalProfile() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
+        minHeight: "100vh",
       }}
     >
-      <h1 className="font-semibold text-2xl ml-8 py-10">My Profile</h1>
-      <div className="flex items-start ml-8">
-        <NavbarProfile
-          setSelect={setSelect}
-          select={select}
-          setWatchList={setWatchList}
-        />
+      <div className="py-10">
+        <h1
+          style={{ fontWeight: "bolder", fontFamily: "ShadowsIntoLight" }}
+          className="font-semibold text-3xl ml-8 py-10"
+        >
+          My Profile
+        </h1>
+        <div className="flex items-start ml-8">
+          <NavbarProfile
+            setSelect={setSelect}
+            select={select}
+            setWatchList={setWatchList}
+          />
 
-        <AccountDetails className="flex-wrap" select={select} />
-        <SubmittedDeals className="flex-wrap" select={select} />
-        <Watchlist
-          className="flex-wrap"
-          select={select}
-          watchList={watchList}
-        />
+          <AccountDetails className="flex-wrap" select={select} />
+          <SubmittedDeals className="flex-wrap" select={select} />
+          <Watchlist
+            className="flex-wrap"
+            select={select}
+            watchList={watchList}
+          />
+        </div>
       </div>
     </div>
   );
