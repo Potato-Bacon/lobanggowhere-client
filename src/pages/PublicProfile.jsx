@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { SERVER } from "../utils/constants";
-
+import { v4 as uuidv4 } from "uuid";
 function PublicProfile() {
   const [publicProfile, setPublicProfile] = useState({});
   const { username } = useParams();
@@ -17,29 +17,22 @@ function PublicProfile() {
     handlePublicProfile();
   }, []);
 
-  // console.log(publicProfile.data[0].img, "test");
   return (
     <>
-      <h1>Public Profile</h1>
-      <h2>{publicProfile?.data?.[0]?.submittedBy}</h2>
+      <div className="font-semibold">Public Profile</div>
 
+      <div className="my-6">
+        Username: {publicProfile?.data?.[0]?.submittedBy}
+      </div>
       {publicProfile?.data?.map((deals) => (
-        <>
-          <Link to={`/deals/${deals._id}`}>
-            <h3>{deals.title} </h3>
-            <img
-              style={{
-                minHeight: "16rem",
-                maxHeight: "16rem",
-                overflow: "hidden",
-                height: "50%",
-                width: "50%",
-              }}
-              src={deals.img}
-              alt="image"
-            />
-          </Link>
-        </>
+        <div className="flex" key={uuidv4()}>
+          <div>
+            <Link to={`/deals/${deals._id}`}>
+              <div className="font-semibold">{deals.title} </div>
+              <img style={{ maxHeight: "200px" }} src={deals.img} alt="image" />
+            </Link>
+          </div>
+        </div>
       ))}
     </>
   );

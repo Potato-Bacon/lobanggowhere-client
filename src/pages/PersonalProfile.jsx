@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AccountDetails from "../components/personalprofile/AccountDetails";
 import NavbarProfile from "../components/personalprofile/NavbarProfile";
 import SubmittedDeals from "../components/personalprofile/SubmittedDeals";
@@ -10,7 +10,7 @@ function PersonalProfile() {
 
   return (
     <>
-      <h1>PersonalProfile</h1>
+      <div className="font-semibold">My Profile</div>
       <div className="flex">
         <NavbarProfile
           setSelect={setSelect}

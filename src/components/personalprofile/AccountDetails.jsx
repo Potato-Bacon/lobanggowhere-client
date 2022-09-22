@@ -45,23 +45,27 @@ function AccountDetails({ select }) {
       {select === "AccountDetails" && (
         <>
           <div className="m-8">
-            <h1 className="m-8">Account Details</h1>
+            <h1 className="m-8">My Account</h1>
             <img
               className="m-8"
               src="https://placeimg.com/80/80/people"
               alt="avatar"
             />
-            <div className="m-8">
-              Username :<span>{user.userName}</span>
-            </div>
-            <div className="m-8">
-              Email address:
-              <span>{user.email}</span>
-            </div>
-            <div className="m-8">
-              Birthday:{" "}
-              <span>{dayjs(user.dateOfBirth).format("DD-MMM-YYYY")}</span>
-            </div>
+            <ul>
+              <li className="m-8">
+                Username : <span className="ml-3">{user.userName}</span>
+              </li>
+              <li className="m-8">
+                My Email Address:
+                <span className="ml-3">{user.email}</span>
+              </li>
+              <li className="m-8">
+                Birthday:
+                <span className="ml-3">
+                  {dayjs(user.dateOfBirth).format("DD-MMM-YYYY")}
+                </span>
+              </li>
+            </ul>
             <div
               className="m-8"
               onClick={handleChangePassword}
@@ -106,6 +110,7 @@ function AccountDetails({ select }) {
                           touched.currentPassword &&
                           errors.currentPassword}
                       </label>
+                      <br />
                       <label>
                         New Password
                         <Field
@@ -119,6 +124,7 @@ function AccountDetails({ select }) {
                           errors.newPassword}
                       </label>
                       <label>
+                        <br />
                         Confirm Password
                         <Field
                           className="m-8"
