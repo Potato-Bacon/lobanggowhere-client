@@ -21,7 +21,10 @@ const Search = ({ setDealsData }) => {
   return (
     <>
       <form onSubmit={formik.handleSubmit} className="flex">
-        <label htmlFor="input"></label>
+        <label
+          htmlFor="input"
+          className="block text-lg font-medium text-gray-700 pr-1"
+        ></label>
         <input
           id="input"
           name="input"

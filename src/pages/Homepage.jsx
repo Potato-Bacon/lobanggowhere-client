@@ -20,7 +20,7 @@ function Homepage() {
 
   return (
     <>
-      {/* <div
+      <div
         style={{
           width: "100vw",
           height: "100vh",
@@ -89,13 +89,14 @@ function Homepage() {
             }}
           ></div>
         </div>
-      </div> */}
+      </div>
+      <div className="h-10"></div>
       <div className="flex flex-wrap justify-center mt-10">
         <Search setDealsData={setDealsData} />
         <SortButton dealsData={dealsData} setDealsData={setDealsData} />
         <button
           onClick={fetchDeal}
-          className=" ml-1 inline-block px-5 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+          className=" ml-1 px-5 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary "
         >
           Clear
         </button>
