@@ -21,7 +21,25 @@ function NavbarProfile({ setSelect, setWatchList }) {
 
   return (
     <>
-      <div
+      <ul className="menu bg-base-100 w-56 p-2 rounded-box">
+        <li className="m-8">
+          <a onClick={() => handleClick("AccountDetails")}>Account Details</a>
+        </li>
+        <li className="m-8">
+          <a
+            onClick={() => {
+              handleClick("SubmittedDeals");
+            }}
+          >
+            Submitted Deals
+          </a>
+        </li>
+        <li className="m-8">
+          <a onClick={() => handleClick("Watchlist")}>Watchlist</a>
+        </li>
+      </ul>
+
+      {/* <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -36,7 +54,7 @@ function NavbarProfile({ setSelect, setWatchList }) {
           Submitted Deals
         </div>
         <div onClick={() => handleClick("Watchlist")}>Watchlist</div>
-      </div>
+      </div> */}
     </>
   );
 }
