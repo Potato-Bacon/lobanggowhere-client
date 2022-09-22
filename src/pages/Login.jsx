@@ -80,7 +80,6 @@ const Login = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
-        minHeight: "95vh",
       }}
     >
       <div className="flex-col flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
