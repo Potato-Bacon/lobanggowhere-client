@@ -14,8 +14,20 @@ const SortButton = ({ dealsData, setDealsData }) => {
   };
   return (
     <>
-      <button onClick={sortPopular}>Popular</button>
-      <button onClick={sortTime}>Recent</button>
+      <button
+        className=" ml-1 inline-block px-5 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+        onClick={sortPopular}
+      >
+        Popular
+      </button>
+
+      <button
+        onClick={sortTime}
+        className=" ml-1 inline-block px-5
+         text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+      >
+        Recent
+      </button>
     </>
   );
 };

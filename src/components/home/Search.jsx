@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useFormik } from "formik";
 import { SERVER } from "../../utils/constants";

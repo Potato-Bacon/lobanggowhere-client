@@ -86,7 +86,12 @@ function Homepage() {
           }}
         >
           <SortButton dealsData={dealsData} setDealsData={setDealsData} />
-          <button onClick={fetchDeal}>Clear</button>
+          <button
+            onClick={fetchDeal}
+            className=" ml-1 inline-block px-5 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+          >
+            Clear
+          </button>
           <Search setDealsData={setDealsData} />
           <div style={{ display: "flex" }}>
             <Deals dealsData={dealsData} />
