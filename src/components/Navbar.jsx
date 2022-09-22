@@ -35,7 +35,7 @@ const Navbar = () => {
           <button onClick={handleNavigate}>Login</button>
         )}
       </div> */}
-      <div className="navbar bg-primary">
+      <div style={{ minHeight: "5vh" }} className="navbar bg-primary">
         <div className="flex-1 text-white">
           <a
             onClick={handleNavigate}

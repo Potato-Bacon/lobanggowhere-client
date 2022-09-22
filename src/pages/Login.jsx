@@ -75,6 +75,7 @@ const Login = () => {
   return (
     <div
       style={{
+        minHeight: "95vh",
         backgroundImage: `url("${background}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",

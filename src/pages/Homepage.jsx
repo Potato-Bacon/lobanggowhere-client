@@ -5,6 +5,7 @@ import Deals from "../components/home/Deals";
 import Search from "../components/home/Search";
 import SortButton from "../components/home/SortPopular";
 import { SERVER } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 import merlionimage from "/src/images/merlionbay2.png";
 import background from "/src/images/pexels-anni-roenkae.jpg";
@@ -18,6 +19,8 @@ function Homepage() {
   useEffect(() => {
     fetchDeal();
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -51,9 +54,19 @@ function Homepage() {
             className="animate-spin-slight flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-full h-56 drop-shadow-lg shadow-2xl"
             style={{ position: "absolute", left: "15%", top: "15%" }}
           >
-            <h1 className="text-xl font-extrabold mt-10">LobangGoWhere</h1>
+            <h1
+              style={{ fontWeight: "bolder", fontFamily: "ShadowsIntoLight" }}
+              className="text-2xl mt-10"
+            >
+              LobangGoWhere
+            </h1>
             <br />
-            <h2 className="text-l font-bold m-2">Kiasu best companion</h2>
+            <h2
+              style={{ fontWeight: "bolder", fontFamily: "DancingScript" }}
+              className="text-xl font-bold m-2"
+            >
+              Kiasu best companion
+            </h2>
           </div>
         </div>
         <div
@@ -79,13 +92,74 @@ function Homepage() {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
+              gap: "10%",
             }}
           >
+            {/* Register card */}
             <div
-              className="bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl h-56 drop-shadow-lg shadow-2xl"
-              style={{}}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              className="bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl h-56 drop-shadow-lg shadow-2xl max-w-xs"
             >
-              <h3>Join the lobang squad today!</h3>
+              <h3 className="break-words text-center text-1xl font-sans">
+                <section className="font-serif font-bold text-2xl pb-3">
+                  Join the lobang squad today!
+                </section>
+                Register an account to get account privileges, and submit deals
+                to help the community!
+              </h3>
+              <button
+                onClick={() => navigate("/register")}
+                className="mt-3 inline-block py-1 px-6 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
+              >
+                Register
+              </button>
+            </div>
+            {/* Search card */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                transform: "translate(0, -30%)"
+              }}
+              className="bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl h-56 drop-shadow-lg shadow-2xl max-w-xs"
+            >
+              <a
+                href="#search"
+                className="break-words text-center font-serif font-bold text-2xl pb-3 underline text-blue-800"
+              >
+                Mai tu liao! Wait what come get your best deals here!
+              </a>
+            </div>
+            {/* Submission card */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                transform: "translate(0, 30%)"
+              }}
+              className="bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl h-56 drop-shadow-lg shadow-2xl max-w-xs"
+            >
+              <h3 className="break-words text-center text-1xl font-sans">
+                <section className="font-serif font-bold text-2xl pb-3">
+                  Share Lobangs!
+                </section>
+                Got lobang, don't selfish la, come share with everyone!
+              </h3>
+              <button
+                onClick={() => navigate("/submission")}
+                className="mt-3 inline-block py-1 px-6 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
+              >
+                Share Lobang
+              </button>
             </div>
           </div>
           <div
@@ -99,7 +173,7 @@ function Homepage() {
         </div>
       </div>
       {/* <div className="h-10"></div> */}
-      <div className="flex flex-row justify-center pt-40 pb-10">
+      <div id="search" className="flex flex-row justify-center pt-40 pb-10">
         <Search setDealsData={setDealsData} />
         <SortButton dealsData={dealsData} setDealsData={setDealsData} />
         <button

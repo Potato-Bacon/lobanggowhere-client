@@ -5,3 +5,13 @@
 html {
   scroll-behavior: smooth !important;
 }
+
+@font-face {
+  font-family: ShadowsIntoLight;
+  src: url(./fonts/ShadowsIntoLight-Regular.ttf);
+}
+
+@font-face {
+  font-family: DancingScript;
+  src: url(./fonts/DancingScript-Regular.ttf);
+}
