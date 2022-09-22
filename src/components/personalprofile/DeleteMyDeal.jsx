@@ -20,7 +20,9 @@ const DeleteMyDeal = ({ deal }) => {
   };
   return (
     <>
-      <button onClick={deleteDeal}>delete</button>
+      <button className="btn btn-active btn-secondary" onClick={deleteDeal}>
+        delete
+      </button>
     </>
   );
 };

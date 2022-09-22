@@ -44,85 +44,103 @@ function AccountDetails({ select }) {
     <>
       {select === "AccountDetails" && (
         <>
-          <h1>Account Details</h1>
-          <img src="https://placeimg.com/80/80/people" alt="avatar" />
-          <div>
-            Username :<span>{user.userName}</span>
-          </div>
-          <div>
-            Email address:
-            <span>{user.email}</span>
-          </div>
-          <div>
-            Birthday:{" "}
-            <span>{dayjs(user.dateOfBirth).format("DD-MMM-YYYY")}</span>
-          </div>
-          <div onClick={handleChangePassword} name="changePassword">
-            Change Password
-            {changePassword && (
-              <Formik
-                initialValues={{
-                  currentPassword: "",
-                  newPassword: "",
-                  confirmPassword: "",
-                }}
-                onSubmit={(values) => {
-                  validation(values);
-                }}
-                validationSchema={Yup.object({
-                  currentPassword: Yup.string().required("Required"),
-                  newPassword: Yup.string()
-                    .max(20, "Must be 20 characters or less")
-                    .min(8, "Must be at least 8 characters")
-                    .required("Required"),
-                  confirmPassword: Yup.string()
-                    .required("Required")
-                    .oneOf(
-                      [Yup.ref("newPassword"), null],
-                      "Passwords must match"
-                    ),
-                })}
-              >
-                {({ values, errors, touched, handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
-                    <label>
-                      Current Password
-                      <Field
-                        type="password"
-                        name="currentPassword"
-                        value={values.currentPassword}
-                      />
-                      {errors.currentPassword &&
-                        touched.currentPassword &&
-                        errors.currentPassword}
-                    </label>
-                    <label>
-                      New Password
-                      <Field
-                        type="password"
-                        name="newPassword"
-                        value={values.newPassword}
-                      />
-                      {errors.newPassword &&
-                        touched.newPassword &&
-                        errors.newPassword}
-                    </label>
-                    <label>
-                      Confirm Password
-                      <Field
-                        type="password"
-                        name="confirmPassword"
-                        value={values.confirmPassword}
-                      />
-                      {errors.confirmPassword &&
-                        touched.confirmPassword &&
-                        errors.confirmPassword}
-                    </label>
-                    <button onClick={handleSubmit}>Submit</button>
-                  </form>
-                )}
-              </Formik>
-            )}
+          <div className="m-8">
+            <h1 className="m-8">Account Details</h1>
+            <img
+              className="m-8"
+              src="https://placeimg.com/80/80/people"
+              alt="avatar"
+            />
+            <div className="m-8">
+              Username :<span>{user.userName}</span>
+            </div>
+            <div className="m-8">
+              Email address:
+              <span>{user.email}</span>
+            </div>
+            <div className="m-8">
+              Birthday:{" "}
+              <span>{dayjs(user.dateOfBirth).format("DD-MMM-YYYY")}</span>
+            </div>
+            <div
+              className="m-8"
+              onClick={handleChangePassword}
+              name="changePassword"
+            >
+              Change Password
+              {changePassword && (
+                <Formik
+                  initialValues={{
+                    currentPassword: "",
+                    newPassword: "",
+                    confirmPassword: "",
+                  }}
+                  onSubmit={(values) => {
+                    validation(values);
+                  }}
+                  validationSchema={Yup.object({
+                    currentPassword: Yup.string().required("Required"),
+                    newPassword: Yup.string()
+                      .max(20, "Must be 20 characters or less")
+                      .min(8, "Must be at least 8 characters")
+                      .required("Required"),
+                    confirmPassword: Yup.string()
+                      .required("Required")
+                      .oneOf(
+                        [Yup.ref("newPassword"), null],
+                        "Passwords must match"
+                      ),
+                  })}
+                >
+                  {({ values, errors, touched, handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
+                      <label>
+                        Current Password
+                        <Field
+                          className="m-8"
+                          type="password"
+                          name="currentPassword"
+                          value={values.currentPassword}
+                        />
+                        {errors.currentPassword &&
+                          touched.currentPassword &&
+                          errors.currentPassword}
+                      </label>
+                      <label>
+                        New Password
+                        <Field
+                          className="m-8"
+                          type="password"
+                          name="newPassword"
+                          value={values.newPassword}
+                        />
+                        {errors.newPassword &&
+                          touched.newPassword &&
+                          errors.newPassword}
+                      </label>
+                      <label>
+                        Confirm Password
+                        <Field
+                          className="m-8"
+                          type="password"
+                          name="confirmPassword"
+                          value={values.confirmPassword}
+                        />
+                        {errors.confirmPassword &&
+                          touched.confirmPassword &&
+                          errors.confirmPassword}
+                      </label>
+                      <button
+                        className="m-8 btn btn-active btn-secondary"
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  )}
+                </Formik>
+              )}
+            </div>
           </div>
         </>
       )}

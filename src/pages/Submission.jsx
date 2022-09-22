@@ -77,7 +77,7 @@ function Submission() {
           }
         }}
         validationSchema={Yup.object({
-          img: Yup.string().required("Url is required"),
+          img: Yup.string().required("Required").url("Link is invalid"),
           // img: Yup.mixed().required("File is required"),
           title: Yup.string()
             .min(8, "Must be 8 characters and more")
@@ -125,7 +125,7 @@ function Submission() {
               <legend>Submission</legend>
               <label>
                 {" "}
-                URL
+                Image URL
                 <Field type="name" name="img" value={values.img} />
               </label>
               {errors.img && touched.img && errors.img}

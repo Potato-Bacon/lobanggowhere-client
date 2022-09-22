@@ -29,28 +29,31 @@ function SubmittedDeals({ select }) {
     <>
       {select === "SubmittedDeals" && (
         <>
-          <h1>Submitted Deals</h1>
+          <div>
+            <h1>Submitted Deals</h1>
 
-          {submittedDeals?.map((deal) => (
-            <div key={uuidv4()}>
-              <h3>{deal.title}</h3>
-              <img
-                style={{
-                  minHeight: "16rem",
-                  maxHeight: "16rem",
-                  overflow: "hidden",
-                  height: "50%",
-                  width: "50%",
-                }}
-                src={deal.img}
-                alt="image"
-              />
-              {deal.submittedStatus !== "Approve" && (
-                <DeleteMyDeal deal={deal} />
-              )}
-              <h3>Status: {deal.submittedStatus}</h3>
-            </div>
-          ))}
+            {submittedDeals?.map((deal) => (
+              <div key={uuidv4()}>
+                <h3 className="m-8">{deal.title}</h3>
+                <img
+                  className="m-8"
+                  style={{
+                    minHeight: "16rem",
+                    maxHeight: "16rem",
+                    overflow: "hidden",
+                    height: "50%",
+                    width: "50%",
+                  }}
+                  src={deal.img}
+                  alt="image"
+                />
+                <h3 className="m-8">Status: {deal.submittedStatus}</h3>
+                {deal.submittedStatus !== "Approve" && (
+                  <DeleteMyDeal deal={deal} />
+                )}
+              </div>
+            ))}
+          </div>
         </>
       )}
     </>
