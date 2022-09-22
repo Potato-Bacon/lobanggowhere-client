@@ -83,79 +83,84 @@ function DealDetails() {
   };
   return (
     <>
-      <div>
-        <img
-          src={render.img}
-          alt="Deals image"
-          style={{
-            maxWidth: "500px",
-            maxHeight: "500px",
-          }}
-        />
-        <h1>{render.title}</h1>
-        <p>
-          ❤️<span>{likeCount}</span>
-          <button
-            style={{
-              background:
-                user?.likes?.includes(id) === false ? "white" : "green",
-            }}
-            onClick={handleLike}
-          >
-            like
-          </button>
-        </p>
-        <button
-          style={{
-            background:
-              user?.watchList?.includes(id) === false ? "green" : "red",
-          }}
-          onClick={handleWatchList}
-        >
-          WatchList
-        </button>
-      </div>
-      <div>
-        <h3>
-          Description: <span>{render.description}</span>
-        </h3>
-        <h3>
-          Link to source:{" "}
-          <a href={render.url} target="_blank" rel="noopener noreferrer">
-            view
-          </a>
-        </h3>
-        <h3>
-          Vendor: <span>{render.vendor}</span>
-        </h3>
-        <h3>
-          Online/inStore: <span>{render.onlineAndOrStore}</span>
-        </h3>
-        <h3>
-          Category: <span>{render.category?.classification}</span>
-        </h3>
-        {render?.dealsCategory === "custom" && (
-          <h3>
-            Deal : <span>{render.custom}</span>
-          </h3>
-        )}
-        {render?.dealsCategory === "free" && (
-          <h3>
-            Deal : <span>Free</span>
-          </h3>
-        )}
-        {render?.dealsCategory === "discounts" && (
-          <div>
-            <h3>Previous Price: ${render.priceBeforeDiscount}</h3>
-            <h3>Discounted Price: ${render.priceAfterDiscount}</h3>
+      <h3 className="mt-14 text-6xl flex justify-evenly">
+        {render.category?.classification}
+      </h3>
+      <div className="flex justify-evenly mt-14">
+        <div className="flex-wrap">
+          <img
+            src={render.img}
+            alt="Deals image"
+            style={{ maxHeight: "600px" }}
+            className="rounded-lg object-cover max-w-xl "
+          />
+          <div className="flex">
+            <p>
+              ❤️<span>{likeCount}</span>
+              <button
+                style={{
+                  background:
+                    user?.likes?.includes(id) === false ? "white" : "green",
+                }}
+                onClick={handleLike}
+              >
+                like
+              </button>
+            </p>
+            <button
+              style={{
+                background:
+                  user?.watchList?.includes(id) === false ? "green" : "red",
+              }}
+              onClick={handleWatchList}
+            >
+              WatchList
+            </button>
           </div>
-        )}
-        <h3>
-          Submitted by :
-          <Link to={`/profile/${render.submittedBy}`}>
-            {render.submittedBy}
-          </Link>
-        </h3>
+        </div>
+        <div className="flex-wrap w-2/5">
+          <div>
+            <h1 className="text-3xl">{render.title}</h1>
+            <a href={render.url} target="_blank" rel="noopener noreferrer">
+              click here for more info
+            </a>
+          </div>
+          <div>
+            <h3 className="text-base">
+              <span>{render.description}</span>
+            </h3>
+            <br />
+
+            <h3>
+              <span>{render.vendor}</span>
+            </h3>
+            <h3>
+              Online/inStore: <span>{render.onlineAndOrStore}</span>
+            </h3>
+            {render?.dealsCategory === "custom" && (
+              <h3>
+                Deal : <span>{render.custom}</span>
+              </h3>
+            )}
+            {render?.dealsCategory === "free" && (
+              <h3>
+                Deal : <span>Free</span>
+              </h3>
+            )}
+            {render?.dealsCategory === "discounts" && (
+              <div>
+                <h3>Previous Price: ${render.priceBeforeDiscount}</h3>
+                <h3>Discounted Price: ${render.priceAfterDiscount}</h3>
+              </div>
+            )}
+            <h3>
+              Submitted by :
+              <Link to={`/profile/${render.submittedBy}`}>
+                {render.submittedBy}
+              </Link>
+            </h3>
+          </div>
+        </div>
       </div>
     </>
   );
