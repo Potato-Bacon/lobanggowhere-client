@@ -17,15 +17,83 @@ function Homepage() {
   }, []);
 
   return (
-    <>
-      <h1>Homepage</h1>
-      <SortButton dealsData={dealsData} setDealsData={setDealsData} />
-      <button onClick={fetchDeal}>clear</button>
-      <Search setDealsData={setDealsData} />
-      <div style={{ display: "flex" }}>
-        <Deals dealsData={dealsData} />
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        margin: "0 auto",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "65vw",
+          backgroundImage: "url(/src/images/merlionbay2.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          objectFit: "fill",
+        }}
+      >
+        <div
+          className="animate-spin-slight flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-full h-56 drop-shadow-lg shadow-2xl"
+          style={{ position: "absolute", left: "15%", top: "15%" }}
+        >
+          <h1 className="text-xl font-extrabold mt-10">LobangGoWhere</h1>
+          <br />
+          <h2 className="text-l font-bold m-2">Kiasu best companion</h2>
+        </div>
       </div>
-    </>
+      <div
+        className="-translate-y-10 -z-10 bg-gradient-to-b from-transparent to-primary"
+        style={{ width: "100%", height: "5vw" }}
+      ></div>
+      <div
+        className="-translate-y-10 bg-gradient-to-b from-primary to-base-100"
+        style={{ width: "100%", height: "5vw" }}
+      ></div>
+      <div
+        className="bg-info"
+        style={{
+          width: "100%",
+          minHeight: "25%",
+          transform: "translate(0, -30%)",
+        }}
+      >
+        <div
+          className="p-10"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            className="bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl h-56 drop-shadow-lg shadow-2xl"
+            style={{}}
+          >
+            <h3>Join the lobang squad today!</h3>
+          </div>
+        </div>
+        <div
+          id="search"
+          className=""
+          style={{
+            width: "100%",
+            height: "25%",
+          }}
+        >
+          <SortButton dealsData={dealsData} setDealsData={setDealsData} />
+          <button onClick={fetchDeal}>Clear</button>
+          <Search setDealsData={setDealsData} />
+          <div style={{ display: "flex" }}>
+            <Deals dealsData={dealsData} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
