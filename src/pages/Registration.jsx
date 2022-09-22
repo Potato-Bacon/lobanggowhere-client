@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import background from "/src/images/pexels-anni-roenkae.jpg";
 import { SERVER } from "../utils/constants";
 import { toast } from "react-toastify";
 
@@ -61,7 +61,14 @@ function Registration() {
   });
 
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url("${background}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        objectFit: "fill",
+      }}
+    >
       <div className="flex-col flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
         <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
           Welcome to LobangGoWhere 💸
@@ -230,7 +237,7 @@ function Registration() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

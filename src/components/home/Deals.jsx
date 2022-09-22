@@ -15,8 +15,8 @@ const Deals = ({ dealsData }) => {
           <div
             onClick={handleClick(deal)}
             key={uuidv4()}
-            className=" bg-white bg-opacity-20 backdrop-blur-md
-         px-10 py-6 rounded-xl drop-shadow-lg w-96 h-96 mt-10"
+            className="bg-white bg-opacity-20 backdrop-blur-md px-10 py-6 rounded-xl h-96 drop-shadow-lg shadow-2xl w-96"
+            // className=" bg-white bg-opacity-20 backdrop-blur-md px-10 py-6 rounded-xl drop-shadow-lg w-96 h-96 mt-10"
           >
             <img
               className="rounded-xl h-full object-fill w-full max-h-72"

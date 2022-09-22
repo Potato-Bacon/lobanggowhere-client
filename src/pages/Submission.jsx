@@ -6,6 +6,7 @@ import axios from "axios";
 import AuthContext from "../context/AuthProvider";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import background from "/src/images/pexels-anni-roenkae.jpg";
 
 function Submission() {
   const [categories, setCategories] = useState([]);
@@ -28,7 +29,14 @@ function Submission() {
 
   const today = new Date(Date.now());
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url("${background}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        objectFit: "fill",
+      }}
+    >
       <h1>Submission</h1>
       <Formik
         initialValues={{
@@ -338,7 +346,7 @@ function Submission() {
           </form>
         )}
       </Formik>
-    </>
+    </div>
   );
 }
 

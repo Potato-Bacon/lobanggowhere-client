@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { SERVER } from "../utils/constants";
 import { Link, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthProvider";
+import background from "/src/images/pexels-anni-roenkae.jpg";
 
 function DealDetails() {
   const { user, setUser } = useContext(AuthContext);
@@ -82,7 +83,14 @@ function DealDetails() {
     updateLike();
   };
   return (
-    <div className="bg-primary">
+    <div
+      style={{
+        backgroundImage: `url("${background}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        objectFit: "fill",
+      }}
+    >
       <div className="flex justify-evenly pt-14 items-start">
         <div
           className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md

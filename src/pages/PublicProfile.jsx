@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { SERVER } from "../utils/constants";
 import { v4 as uuidv4 } from "uuid";
+import background from "/src/images/pexels-anni-roenkae.jpg";
+
 function PublicProfile() {
   const [publicProfile, setPublicProfile] = useState({});
   const { username } = useParams();
@@ -18,7 +20,14 @@ function PublicProfile() {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url("${background}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        objectFit: "fill",
+      }}
+    >
       <div className="font-semibold">Public Profile</div>
 
       <div className="my-6">
@@ -34,7 +43,7 @@ function PublicProfile() {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

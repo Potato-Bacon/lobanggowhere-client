@@ -7,6 +7,7 @@ import SortButton from "../components/home/SortPopular";
 import { SERVER } from "../utils/constants";
 
 import merlionimage from "/src/images/merlionbay2.png";
+import background from "/src/images/pexels-anni-roenkae.jpg";
 
 function Homepage() {
   const [dealsData, setDealsData] = useState([]);
@@ -19,7 +20,14 @@ function Homepage() {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url("${background}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        objectFit: "fill",
+      }}
+    >
       <div
         style={{
           width: "100vw",
@@ -49,15 +57,15 @@ function Homepage() {
           </div>
         </div>
         <div
-          className="-translate-y-10 -z-10 bg-gradient-to-b from-transparent to-primary"
+          className="-translate-y-10 bg-gradient-to-t from-info to-transparent"
           style={{ width: "100%", height: "5vw" }}
         ></div>
         <div
-          className="-translate-y-10 bg-gradient-to-b from-primary to-base-100"
+          className="-translate-y-10 bg-gradient-to-b from-info to-transparent"
           style={{ width: "100%", height: "5vw" }}
         ></div>
         <div
-          className="bg-info"
+          className=""
           style={{
             width: "100%",
             minHeight: "25%",
@@ -101,10 +109,10 @@ function Homepage() {
           Clear
         </button>
       </div>
-      <div className="flex flex-wrap justify-center mt-10">
+      <div className="flex flex-wrap justify-center mt-10 pb-20">
         <Deals dealsData={dealsData} />
       </div>
-    </>
+    </div>
   );
 }
 
