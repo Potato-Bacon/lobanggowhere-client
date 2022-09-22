@@ -31,68 +31,79 @@ const ApproveDeals = ({ display, setDisplay, setRenderList, renderList }) => {
     }
   };
   return (
-    <>
-      {renderList.length !== 0 && (
-        <div
-          style={{
-            border: "10px solid",
-            width: "500px",
-            height: "600px",
-            overflow: "scroll",
-          }}
-        >
-          <div>
-            <img
-              src={display.img}
-              alt="Deals image"
-              style={{
-                maxWidth: "300px",
-                maxHeight: "300px",
-              }}
-            />
-            <h1>{display.title}</h1>
-          </div>
-          <div>
-            <h3>
-              Description: <span>{display.description}</span>
-            </h3>
-            <h3>
-              Link to source:{" "}
-              <a href={display.url} target="_blank" rel="noopener noreferrer">
-                view
-              </a>
-            </h3>
-            <h3>
-              Vendor: <span>{display.vendor}</span>
-            </h3>
-            <h3>
-              Online/inStore: <span>{display.onlineAndOrStore}</span>
-            </h3>
-            <h3>
-              Category: <span>{display.category.classification}</span>
-            </h3>
-            {display.dealsCategory === "custom" && (
+    <div>
+      <div className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl ">
+        {renderList.length !== 0 && (
+          <div
+            style={{
+              width: "500px",
+              height: "600px",
+            }}
+          >
+            <div>
+              <img
+                src={display.img}
+                alt="Deals image"
+                className="max-w-xs max-h-80"
+              />
+              <h1 className="text-2xl">{display.title}</h1>
+            </div>
+            <div className="text-lg">
               <h3>
-                Deal : <span>{display.custom}</span>
+                Description:{" "}
+                <span className="text-base">{display.description}</span>
               </h3>
-            )}
-            {display.dealsCategory === "free" && (
               <h3>
-                Deal : <span>Free</span>
+                Link to source:{" "}
+                <a href={display.url} target="_blank" rel="noopener noreferrer">
+                  view
+                </a>
               </h3>
-            )}
-            {display.dealsCategory === "discounts" && (
-              <div>
-                <h3>Previous Price: ${display.priceBeforeDiscount}</h3>
-                <h3>Discounted Price: ${display.priceAfterDiscount}</h3>
-              </div>
-            )}
+              <h3>
+                Vendor: <span className="text-base">{display.vendor}</span>
+              </h3>
+              <h3>
+                Online/inStore:{" "}
+                <span className="text-base">{display.onlineAndOrStore}</span>
+              </h3>
+              <h3>
+                Category: <span>{display.category.classification}</span>
+              </h3>
+              {display.dealsCategory === "custom" && (
+                <h3>
+                  Deal: <span className="text-base">{display.custom}</span>
+                </h3>
+              )}
+              {display.dealsCategory === "free" && (
+                <h3>
+                  Deal: <span>Free</span>
+                </h3>
+              )}
+              {display.dealsCategory === "discounts" && (
+                <div>
+                  <h3>Previous Price: ${display.priceBeforeDiscount}</h3>
+                  <h3>Discounted Price: ${display.priceAfterDiscount}</h3>
+                </div>
+              )}
+            </div>
+            <div className="flex justify-self-center mt-3">
+              <button
+                className=" px-7 mx-4 ml-1 inline-block text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+                onClick={handleApproval("Approve")}
+              >
+                Approve
+              </button>
+              <button
+                className="ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+                onClick={handleApproval("Reject")}
+              >
+                Reject
+              </button>
+            </div>
           </div>
-          <button onClick={handleApproval("Approve")}>Approve</button>
-          <button onClick={handleApproval("Reject")}>Reject</button>
-        </div>
-      )}
-    </>
+        )}
+      </div>
+    </div>
   );
 };
 
