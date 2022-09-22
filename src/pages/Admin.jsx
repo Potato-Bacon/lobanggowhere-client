@@ -20,15 +20,18 @@ function Admin() {
   }, []);
   return (
     <>
-      <h1>Admin</h1>
-      <DeleteDeal setRenderList={setRenderList} />
-      <ApproveDeals
-        display={display}
-        setDisplay={setDisplay}
-        setRenderList={setRenderList}
-        renderList={renderList}
-      />
-      <ListOfDeals setDisplay={setDisplay} renderList={renderList} />
+      <div className="flex bg-primary items-start justify-evenly">
+        <ApproveDeals
+          display={display}
+          setDisplay={setDisplay}
+          setRenderList={setRenderList}
+          renderList={renderList}
+        />
+        <div className="flex-col">
+          <DeleteDeal setRenderList={setRenderList} />
+          <ListOfDeals setDisplay={setDisplay} renderList={renderList} />
+        </div>
+      </div>
     </>
   );
 }
