@@ -38,46 +38,48 @@ const DeleteDeal = ({ setRenderList }) => {
     }
   };
   return (
-    <div className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl mb-8">
-      <h1 className="text-xl">Delete Deals by title ...</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <div className="flex py-2">
-          <label
-            htmlFor="input"
-            className="block text-lg font-medium text-gray-700"
-          ></label>
-          <input
-            id="input"
-            name="input"
-            type="input"
-            onChange={formik.handleChange}
-            value={formik.values.input}
-            className="pl-2 w-full  h-8 text-base text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
-          />
+    <>
+      <div className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl mb-8">
+        <h1 className="text-xl">Delete Deals by title ...</h1>
+        <form onSubmit={formik.handleSubmit}>
+          <div className="flex py-2">
+            <label
+              htmlFor="input"
+              className="block text-lg font-medium text-gray-700"
+            ></label>
+            <input
+              id="input"
+              name="input"
+              type="input"
+              onChange={formik.handleChange}
+              value={formik.values.input}
+              className="pl-2 w-full  h-8 text-base text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"
+            />
 
-          <button
-            type="submit"
-            className=" ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
-          >
-            Search
-          </button>
+            <button
+              type="submit"
+              className=" ml-1 inline-block px-10 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+        <div>
+          <ol className="list-decimal ml-3">
+            {renderDelete.map((x) => {
+              return (
+                <li key={uuidv4()}>
+                  {x.title}
+                  <br />
+                  <span>Submitted by: {x.submittedBy} </span>
+                  <button onClick={confirmDelete(x._id)}>🗑️</button>
+                </li>
+              );
+            })}
+          </ol>
         </div>
-      </form>
-      <div>
-        <ol className="list-decimal ml-3">
-          {renderDelete.map((x) => {
-            return (
-              <li key={uuidv4()}>
-                {x.title}
-                <br />
-                <span>Submitted by: {x.submittedBy} </span>
-                <button onClick={confirmDelete(x._id)}>🗑️</button>
-              </li>
-            );
-          })}
-        </ol>
       </div>
-    </div>
+    </>
   );
 };
 
