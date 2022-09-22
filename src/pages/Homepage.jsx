@@ -98,8 +98,8 @@ function Homepage() {
           ></div>
         </div>
       </div>
-      <div className="h-10"></div>
-      <div className="flex flex-row justify-center">
+      {/* <div className="h-10"></div> */}
+      <div className="flex flex-row justify-center pt-40 pb-10">
         <Search setDealsData={setDealsData} />
         <SortButton dealsData={dealsData} setDealsData={setDealsData} />
         <button
