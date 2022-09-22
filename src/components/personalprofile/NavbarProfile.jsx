@@ -21,7 +21,7 @@ function NavbarProfile({ setSelect, setWatchList }) {
 
   return (
     <>
-      <ul className="menu bg-base-100 w-56 p-2 rounded-box">
+      <ul className="menu w-56 p-2 shadow-2xl bg-white bg-opacity-20 backdrop-blur-md rounded-xl drop-shadow-lg">
         <li className="m-8">
           <a onClick={() => handleClick("AccountDetails")}>Account Details</a>
         </li>

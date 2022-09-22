@@ -33,7 +33,7 @@ const Deals = ({ dealsData }) => {
 
       <button
         onClick={() => navigate(`/submission`)}
-        className="pb-1 ml-1 inline-block px-5 text-lg font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary fixed bottom-4"
+        className="pb-1 ml-1 inline-block px-5 text-lg font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary fixed bottom-4"
       >
         Share a deal
       </button>

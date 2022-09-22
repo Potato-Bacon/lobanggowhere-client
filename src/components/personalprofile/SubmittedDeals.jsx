@@ -28,22 +28,22 @@ function SubmittedDeals({ select }) {
   return (
     <>
       {select === "SubmittedDeals" && (
-        <div
-          className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md
-         px-8 py-6 rounded-xl drop-shadow-lg "
-        >
+        <div className="grid grid-cols-2 gap-10 ml-10 ">
           {submittedDeals?.map((deal) => (
-            <div key={uuidv4()}>
-              <h3 className="m-8 font-semibold">{deal.title}</h3>
+            <div
+              key={uuidv4()}
+              className="bg-white bg-opacity-20 backdrop-blur-md px-10 py-6 rounded-xl drop-shadow-lg shadow-2xl w-96 flex flex-wrap items-center justify-center"
+            >
+              <h3 className=" font-semibold m-2 text-lg">{deal.title}</h3>
               <img
-                className="m-8"
+                className="rounded-lg m-2"
                 style={{
                   maxHeight: "200px",
                 }}
                 src={deal.img}
                 alt="image"
               />
-              <div className="m-8" name="status">
+              <div className="m-2 text-lg" name="status">
                 Status: <span>{deal.submittedStatus}</span>
               </div>
               {deal.submittedStatus !== "Approve" && (

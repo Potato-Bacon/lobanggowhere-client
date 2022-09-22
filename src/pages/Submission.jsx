@@ -10,7 +10,7 @@ import background from "/src/images/pexels-anni-roenkae.jpg";
 
 function Submission() {
   const [categories, setCategories] = useState([]);
-  const { user, setSubmittedDeals, submittedDeals } = useContext(AuthContext);
+  const { user, setSubmittedDeals } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +35,7 @@ function Submission() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
+        minHeight: "95vh",
       }}
     >
       <h1>Submission</h1>

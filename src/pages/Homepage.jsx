@@ -29,6 +29,7 @@ function Homepage() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         objectFit: "fill",
+        minHeight: "95vh",
       }}
     >
       <div
@@ -178,7 +179,7 @@ function Homepage() {
         <SortButton dealsData={dealsData} setDealsData={setDealsData} />
         <button
           onClick={fetchDeal}
-          className=" ml-1 px-5 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary "
+          className=" ml-1 px-5 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white "
         >
           Clear
         </button>
