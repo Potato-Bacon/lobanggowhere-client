@@ -45,29 +45,29 @@ function AccountDetails({ select }) {
       {select === "AccountDetails" && (
         <>
           <div className="m-8">
-            <h1 className="m-8">My Account</h1>
-            <img
+            <h1 className="ml-8 text-2xl">My Account</h1>
+            {/* <img
               className="m-8 "
-              src="https://placeimg.com/80/80/people"
+              src="https://i.postimg.cc/rwYDpQd4/Screenshot-2022-09-23-at-12-32-50-AM-removebg-preview.png"
               alt="avatar"
-            />
+            /> */}
             <ul>
-              <li className="m-8">
-                Username : <span className="ml-3">{user.userName}</span>
+              <li className="m-8 text-xl">
+                Username: <span className="ml-3">{user.userName}</span>
               </li>
-              <li className="m-8">
+              <li className="m-8 text-xl">
                 My Email Address:
                 <span className="ml-3">{user.email}</span>
               </li>
-              <li className="m-8">
+              <li className="m-8 text-xl">
                 Birthday:
-                <span className="ml-3">
+                <span className="ml-3 text-xl">
                   {dayjs(user.dateOfBirth).format("DD-MMM-YYYY")}
                 </span>
               </li>
             </ul>
             <div
-              className="m-8"
+              className="m-8 text-xl"
               onClick={handleChangePassword}
               name="changePassword"
             >
@@ -101,7 +101,7 @@ function AccountDetails({ select }) {
                       <label>
                         Current Password
                         <Field
-                          className="m-8"
+                          className="m-1 mt-8"
                           type="password"
                           name="currentPassword"
                           value={values.currentPassword}
@@ -114,7 +114,7 @@ function AccountDetails({ select }) {
                       <label>
                         New Password
                         <Field
-                          className="m-8"
+                          className="mx-8 my-3"
                           type="password"
                           name="newPassword"
                           value={values.newPassword}
@@ -127,7 +127,7 @@ function AccountDetails({ select }) {
                         <br />
                         Confirm Password
                         <Field
-                          className="m-8"
+                          className="m-1"
                           type="password"
                           name="confirmPassword"
                           value={values.confirmPassword}

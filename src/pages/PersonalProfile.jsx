@@ -19,8 +19,8 @@ function PersonalProfile() {
         minHeight: "95vh",
       }}
     >
-      <div className="font-semibold">My Profile</div>
-      <div className="flex">
+      <h1 className="font-semibold text-2xl ml-8 py-10">My Profile</h1>
+      <div className="flex items-start ml-8">
         <NavbarProfile
           setSelect={setSelect}
           select={select}
