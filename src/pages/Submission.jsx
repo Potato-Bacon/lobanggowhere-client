@@ -68,7 +68,7 @@ function Submission() {
               console.log("updated deal submission to user %o", response);
               toast.success("Submitted!");
 
-              navigate(`/account`);
+              navigate(`/`);
             } catch (error) {
               console.log(error.response);
             }

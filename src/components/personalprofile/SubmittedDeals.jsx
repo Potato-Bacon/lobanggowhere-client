@@ -11,7 +11,7 @@ function SubmittedDeals({ select }) {
 
   useEffect(() => {
     renderSubmittedDeals();
-  }, []);
+  }, [select]);
 
   const renderSubmittedDeals = async () => {
     const submissions = user.submissions;
@@ -28,32 +28,30 @@ function SubmittedDeals({ select }) {
   return (
     <>
       {select === "SubmittedDeals" && (
-        <>
-          <div
-            className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md
+        <div
+          className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md
          px-8 py-6 rounded-xl drop-shadow-lg "
-          >
-            {submittedDeals?.map((deal) => (
-              <div key={uuidv4()}>
-                <h3 className="m-8 font-semibold">{deal.title}</h3>
-                <img
-                  className="m-8"
-                  style={{
-                    maxHeight: "200px",
-                  }}
-                  src={deal.img}
-                  alt="image"
-                />
-                <div className="m-8" name="status">
-                  Status: <span>{deal.submittedStatus}</span>
-                </div>
-                {deal.submittedStatus !== "Approve" && (
-                  <DeleteMyDeal deal={deal} />
-                )}
+        >
+          {submittedDeals?.map((deal) => (
+            <div key={uuidv4()}>
+              <h3 className="m-8 font-semibold">{deal.title}</h3>
+              <img
+                className="m-8"
+                style={{
+                  maxHeight: "200px",
+                }}
+                src={deal.img}
+                alt="image"
+              />
+              <div className="m-8" name="status">
+                Status: <span>{deal.submittedStatus}</span>
               </div>
-            ))}
-          </div>
-        </>
+              {deal.submittedStatus !== "Approve" && (
+                <DeleteMyDeal deal={deal} />
+              )}
+            </div>
+          ))}
+        </div>
       )}
     </>
   );

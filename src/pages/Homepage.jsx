@@ -91,7 +91,7 @@ function Homepage() {
         </div>
       </div>
       <div className="h-10"></div>
-      <div className="flex flex-wrap justify-center mt-10">
+      <div className="flex flex-row justify-center">
         <Search setDealsData={setDealsData} />
         <SortButton dealsData={dealsData} setDealsData={setDealsData} />
         <button
@@ -100,7 +100,8 @@ function Homepage() {
         >
           Clear
         </button>
-
+      </div>
+      <div className="flex flex-wrap justify-center mt-10">
         <Deals dealsData={dealsData} />
       </div>
     </>
