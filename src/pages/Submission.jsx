@@ -120,159 +120,221 @@ function Submission() {
           handleBlur,
           handleSubmit,
         }) => (
-          <form onSubmit={handleSubmit}>
-            <fieldset>
-              <legend>Submission</legend>
-              <label>
-                {" "}
-                Image URL
-                <Field type="name" name="img" value={values.img} />
-              </label>
-              {errors.img && touched.img && errors.img}
-              <br />
-              <label>
-                Title *
-                <Field name="title" value={values.title} />
-                {errors.title && touched.title && errors.title}
-              </label>
-              <label>Select category</label>
-              <Field as="select" name="category">
-                <option value="">--Please choose an option--</option>
-                {categories?.data?.map((category) => (
-                  <option key={category?._id} value={category?._id}>
-                    {category?.classification}
-                  </option>
-                ))}
-                {/* {Unable to get error message to work} */}
-              </Field>
-              {errors.category && touched.category && errors.category}
-
-              <br />
-              <label>
-                Description *
-                <textarea
-                  name="description"
-                  rows="6"
-                  cols="60"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.description}
-                />
-                {errors.description &&
-                  touched.description &&
-                  errors.description}
-              </label>
-              <br />
-              <label>
-                Vendor *
-                <Field name="vendor" value={values.vendor} />
-                {errors.vendor && touched.vendor && errors.vendor}
-              </label>
-              <br />
-              <div role="group" aria-labelledby="checkbox-group">
-                <label>
-                  <Field
-                    type="checkbox"
-                    name="onlineAndOrStore"
-                    value="inStore"
-                  />
-                  In-Store
-                </label>
-                <label>
-                  <Field
-                    type="checkbox"
-                    name="onlineAndOrStore"
-                    value="online"
-                  />
-                  Online
-                </label>
-                {errors.onlineAndOrStore &&
-                  touched.onlineAndOrStore &&
-                  errors.onlineAndOrStore}
-              </div>
-              <br />
-              <label>
-                Link to source *
-                <Field name="url" value={values.url} />
-                {errors.url && touched.url && errors.url}
-              </label>
-              <br />
-
-              {values.category === "6323eba993531f8996098a53" && (
-                <>
+          <form className="flex justify-center" onSubmit={handleSubmit}>
+            <div>
+              <div>
+                <fieldset>
                   <label>
-                    Address*
-                    <Field name="address" value={values.address} />
-                    {errors.address && touched.address && errors.address}
-                  </label>
-                </>
-              )}
-
-              <div role="group" aria-labelledby="my-radio-group">
-                <label>
-                  <Field type="radio" name="dealsCategory" value="free" />
-                  Free
-                </label>
-                <label>
-                  <Field type="radio" name="dealsCategory" value="discounts" />
-                  Price Discounts
-                </label>
-                <label>
-                  <Field type="radio" name="dealsCategory" value="custom" />
-                  Custom
-                </label>
-              </div>
-              {values.dealsCategory === "discounts" && (
-                <>
-                  <label>
-                    Price Before Discount
+                    Image URL
+                    <br />
                     <Field
-                      name="priceBeforeDiscount"
-                      value={values.priceBeforeDiscount}
+                      className="w-1/4 my-3"
+                      type="name"
+                      name="img"
+                      value={values.img}
                     />
                   </label>
-                  {errors.priceBeforeDiscount &&
-                    touched.priceBeforeDiscount &&
-                    errors.priceBeforeDiscount}
-
+                  {errors.img && touched.img && errors.img}
+                  <br />
                   <label>
+                    Title *
                     <br />
-                    Price After Discount
                     <Field
-                      name="priceAfterDiscount"
-                      value={values.priceAfterDiscount}
+                      className="w-1/4 my-3"
+                      name="title"
+                      value={values.title}
                     />
+                    {errors.title && touched.title && errors.title}
                   </label>
-                  {errors.priceAfterDiscount &&
-                    touched.priceAfterDiscount &&
-                    errors.priceAfterDiscount}
                   <br />
-                </>
-              )}
-              {values.dealsCategory === "custom" && (
-                <>
+                  <label>Select category</label> <br />
+                  <Field className="my-3" as="select" name="category">
+                    <option value="">--Please choose an option--</option>
+                    {categories?.data?.map((category) => (
+                      <option key={category?._id} value={category?._id}>
+                        {category?.classification}
+                      </option>
+                    ))}
+                    {/* {Unable to get error message to work} */}
+                  </Field>
+                  {errors.category && touched.category && errors.category}
+                  <br />
                   <label>
-                    <br />
-                    Custom
-                    <Field name="custom" value={values.custom} />
+                    Description * <br />
+                    <textarea
+                      className="my-3"
+                      name="description"
+                      rows="6"
+                      cols="60"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.description}
+                    />
+                    {errors.description &&
+                      touched.description &&
+                      errors.description}
                   </label>
-                  {errors.custom && touched.custom && errors.custom}
                   <br />
-                </>
-              )}
+                  <label>
+                    Vendor * <br />
+                    <Field
+                      className="w-1/4 my-3"
+                      name="vendor"
+                      value={values.vendor}
+                    />
+                    {errors.vendor && touched.vendor && errors.vendor}
+                  </label>
+                  <br />
+                  <div
+                    className="my-3"
+                    role="group"
+                    aria-labelledby="checkbox-group"
+                  >
+                    <label>
+                      <Field
+                        type="checkbox"
+                        name="onlineAndOrStore"
+                        value="inStore"
+                      />
+                      In-Store
+                    </label>
+                    <label className="ml-4">
+                      <Field
+                        type="checkbox"
+                        name="onlineAndOrStore"
+                        value="online"
+                      />
+                      Online
+                    </label>
+                    {errors.onlineAndOrStore &&
+                      touched.onlineAndOrStore &&
+                      errors.onlineAndOrStore}
+                  </div>
+                  <br />
+                  <label>
+                    Link to source * <br />
+                    <Field
+                      className="w-1/4 my-3"
+                      name="url"
+                      value={values.url}
+                    />
+                    {errors.url && touched.url && errors.url}
+                  </label>
+                  <br />
+                  {values.category === "6323eba993531f8996098a53" && (
+                    <>
+                      <label>
+                        Address* <br />
+                        <Field name="address" value={values.address} />
+                        {errors.address && touched.address && errors.address}
+                      </label>
+                    </>
+                  )}
+                  <div
+                    className="my-3"
+                    role="group"
+                    aria-labelledby="my-radio-group"
+                  >
+                    <div className="flex justify-between">
+                      <label>
+                        <Field type="radio" name="dealsCategory" value="free" />
+                        Free
+                      </label>
+                      <label>
+                        <Field
+                          type="radio"
+                          name="dealsCategory"
+                          value="discounts"
+                        />
+                        Price Discounts
+                      </label>
+                      <label>
+                        <Field
+                          type="radio"
+                          name="dealsCategory"
+                          value="custom"
+                        />
+                        Custom
+                      </label>
+                    </div>
+                  </div>
+                  {values.dealsCategory === "discounts" && (
+                    <>
+                      <label>
+                        Price Before Discount <br />
+                        <Field
+                          className="w-1/4 my-3"
+                          name="priceBeforeDiscount"
+                          value={values.priceBeforeDiscount}
+                        />
+                      </label>
+                      {errors.priceBeforeDiscount &&
+                        touched.priceBeforeDiscount &&
+                        errors.priceBeforeDiscount}
 
-              <label>
-                Start Date
-                <Field type="date" name="startDate" value={values.startDate} />
-                {errors.startDate && touched.startDate && errors.startDate}
-              </label>
-              <label>
-                End Date *
-                <Field type="date" name="endDate" value={values.endDate} />
-                {errors.endDate && touched.endDate && errors.endDate}
-              </label>
-            </fieldset>
-            <button type="submit">Submit</button>
+                      <label>
+                        <br />
+                        Price After Discount <br />
+                        <Field
+                          className="w-1/4 my-3"
+                          name="priceAfterDiscount"
+                          value={values.priceAfterDiscount}
+                        />
+                      </label>
+                      {errors.priceAfterDiscount &&
+                        touched.priceAfterDiscount &&
+                        errors.priceAfterDiscount}
+                      <br />
+                    </>
+                  )}
+                  {values.dealsCategory === "custom" && (
+                    <>
+                      <label>
+                        Custom
+                        <br />
+                        <Field
+                          className="w-1/4"
+                          name="custom"
+                          value={values.custom}
+                        />
+                      </label>
+                      {errors.custom && touched.custom && errors.custom}
+                      <br />
+                    </>
+                  )}
+                  <div className="flex my-3">
+                    <label>
+                      Start Date <br />
+                      <Field
+                        type="date"
+                        name="startDate"
+                        value={values.startDate}
+                      />
+                      {errors.startDate &&
+                        touched.startDate &&
+                        errors.startDate}
+                    </label>
+                    <br />
+                    <label className="ml-8 ">
+                      End Date * <br />
+                      <Field
+                        type="date"
+                        name="endDate"
+                        value={values.endDate}
+                      />
+                      {errors.endDate && touched.endDate && errors.endDate}
+                    </label>
+                  </div>
+                </fieldset>
+                <br />
+              </div>
+              <button
+                className="inline-block px-12 py-3 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         )}
       </Formik>
