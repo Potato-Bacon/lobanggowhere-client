@@ -7,6 +7,16 @@ module.exports = {
         silver: "#E5E5E5",
         test2: "#7dd3fc",
       },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
+
+      animation: {
+        "spin-slight": "wiggle 3s ease-in-out infinite",
+      },
     },
   },
   plugins: [require("daisyui")],

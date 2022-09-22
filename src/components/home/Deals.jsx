@@ -35,7 +35,7 @@ const Deals = ({ dealsData }) => {
         </div>
       ))}
 
-      <button
+      {/* <button
         style={{
           position: "fixed",
           bottom: 0,
@@ -44,7 +44,7 @@ const Deals = ({ dealsData }) => {
         onClick={() => navigate(`/submission`)}
       >
         Share a deal
-      </button>
+      </button> */}
     </>
   );
 };
