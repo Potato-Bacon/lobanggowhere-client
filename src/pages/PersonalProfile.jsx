@@ -11,16 +11,21 @@ function PersonalProfile() {
   return (
     <>
       <h1>PersonalProfile</h1>
+      <div className="flex">
+        <NavbarProfile
+          setSelect={setSelect}
+          select={select}
+          setWatchList={setWatchList}
+        />
 
-      <NavbarProfile
-        setSelect={setSelect}
-        select={select}
-        setWatchList={setWatchList}
-      />
-
-      <AccountDetails select={select} />
-      <SubmittedDeals select={select} />
-      <Watchlist select={select} watchList={watchList} />
+        <AccountDetails className="flex-wrap" select={select} />
+        <SubmittedDeals className="flex-wrap" select={select} />
+        <Watchlist
+          className="flex-wrap"
+          select={select}
+          watchList={watchList}
+        />
+      </div>
     </>
   );
 }
