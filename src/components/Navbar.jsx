@@ -61,9 +61,11 @@ const Navbar = () => {
                   <span className="badge">New</span>
                 </Link>
               </li>
-              <li>
-                <a onClick={handleNavigate}>Admin</a>
-              </li>
+              {user?.roles?.includes("Admin") && (
+                <li>
+                  <a onClick={handleNavigate}>Admin</a>
+                </li>
+              )}
               <li>
                 {user.userName ? (
                   <a onClick={handleNavigate}>Logout</a>
