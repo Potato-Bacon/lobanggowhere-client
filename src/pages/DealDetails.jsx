@@ -82,64 +82,56 @@ function DealDetails() {
     updateLike();
   };
   return (
-    <>
-      <h3 className="mt-14 text-6xl flex justify-evenly">
-        {render.category?.classification}
-      </h3>
-      <div className="flex justify-evenly mt-14">
-        <div className="flex-wrap">
+    <div className="bg-primary">
+      <div className="flex justify-evenly pt-14 items-start">
+        <div
+          className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md
+         px-8 py-6 rounded-xl drop-shadow-lg "
+        >
           <img
             src={render.img}
             alt="Deals image"
             style={{ maxHeight: "600px" }}
-            className="rounded-lg object-cover max-w-xl "
+            className="rounded-lg object-cover max-w-xl mb-2"
           />
-          <div className="flex">
-            <p>
-              ❤️<span>{likeCount}</span>
-              <button
-                style={{
-                  background:
-                    user?.likes?.includes(id) === false ? "white" : "green",
-                }}
-                onClick={handleLike}
-              >
-                like
-              </button>
-            </p>
-            <button
-              style={{
-                background:
-                  user?.watchList?.includes(id) === false ? "green" : "red",
-              }}
-              onClick={handleWatchList}
-            >
-              WatchList
-            </button>
-          </div>
+          <a href={render.url} target="_blank" rel="noopener noreferrer">
+            click here for more info
+          </a>
         </div>
-        <div className="flex-wrap w-2/5">
+        <div
+          className="flex-wrap w-2/5 bg-test bg-white bg-opacity-20 backdrop-blur-md
+
+px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl ml-14"
+        >
           <div>
-            <h1 className="text-3xl">{render.title}</h1>
-            <a href={render.url} target="_blank" rel="noopener noreferrer">
-              click here for more info
-            </a>
+            <h1 className="text-4xl">{render.title}</h1>
+
+            <div className="flex py-1">
+              <button onClick={handleLike} className="pr-2">
+                {user?.likes?.includes(id) === true ? "❤️" : "🤍"}
+                {likeCount}likes
+              </button>
+              <p>WatchList</p>
+
+              <button onClick={handleWatchList} className="pr-2">
+                {user?.watchList?.includes(id) === true ? "✖️" : "➕"}
+              </button>
+            </div>
           </div>
           <div>
-            <h3 className="text-base">
+            <h3 className="text-sm">
               <span>{render.description}</span>
             </h3>
             <br />
 
-            <h3>
-              <span>{render.vendor}</span>
-            </h3>
+            <h3 className="text-lg">{render.vendor}</h3>
+            {/* <h3 className=" text-base ">{render.category?.classification}</h3> */}
             <h3>
               Online/inStore: <span>{render.onlineAndOrStore}</span>
             </h3>
             {render?.dealsCategory === "custom" && (
               <h3>
-                Deal : <span>{render.custom}</span>
+                Deal: <span>{render.custom}</span>
               </h3>
             )}
             {render?.dealsCategory === "free" && (
@@ -153,16 +145,15 @@ function DealDetails() {
                 <h3>Discounted Price: ${render.priceAfterDiscount}</h3>
               </div>
             )}
-            <h3>
-              Submitted by :
-              <Link to={`/profile/${render.submittedBy}`}>
-                {render.submittedBy}
-              </Link>
-            </h3>
+
+            <Link to={`/profile/${render.submittedBy}`}>
+              <span>Submitted by: </span>
+              {render.submittedBy}
+            </Link>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
