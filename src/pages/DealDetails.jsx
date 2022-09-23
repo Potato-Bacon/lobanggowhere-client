@@ -156,7 +156,7 @@ px-8 py-6 rounded-xl drop-shadow-lg shadow-2xl ml-14"
 
             <Link to={`/profile/${render.submittedBy}`}>
               <span>Submitted by: </span>
-              {render.submittedBy}
+              <span className="underline">{render.submittedBy}</span>
             </Link>
           </div>
         </div>
