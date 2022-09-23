@@ -43,7 +43,7 @@ function SubmittedDeals({ select }) {
                 src={deal.img}
                 alt="image"
               />
-              <div className="m-2 text-lg" name="status">
+              <div className="m-2 text-lg font-semibold font-sans" name="status">
                 Status: <span>{deal.submittedStatus}</span>
               </div>
               {deal.submittedStatus !== "Approve" && (

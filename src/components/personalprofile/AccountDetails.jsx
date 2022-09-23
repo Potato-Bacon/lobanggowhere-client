@@ -71,7 +71,10 @@ function AccountDetails({ select }) {
               onClick={handleChangePassword}
               name="changePassword"
             >
-              Change Password
+              <button className="mt-3 inline-block py-1 px-6 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary">
+                Change Password
+              </button>
+
               {changePassword && (
                 <Formik
                   initialValues={{
@@ -137,7 +140,7 @@ function AccountDetails({ select }) {
                           errors.confirmPassword}
                       </label>
                       <button
-                        className="m-8 btn btn-active btn-secondary"
+                        className="mt-3 inline-block py-1 px-6 text-sm font-medium text-white bg-primary border border-primary transition rounded-md shrink-0 hover:bg-error hover:text-white focus:outline-none focus:ring active:text-primary"
                         onClick={handleSubmit}
                       >
                         Submit

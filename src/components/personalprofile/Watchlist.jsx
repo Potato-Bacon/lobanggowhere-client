@@ -14,7 +14,7 @@ function Watchlist({ select, watchList }) {
                 className="bg-white bg-opacity-20 backdrop-blur-md px-10 py-6 rounded-xl drop-shadow-lg flex items-center justify-center"
               >
                 <Link to={`/deals/${deal._id}`} key={deal._id}>
-                  <h1 className="font-semibold text-center">{deal.title}</h1>
+                  <h1 className="font-semibold text-center underline">{deal.title}</h1>
                   <img
                     className="rounded-lg my-3"
                     style={{

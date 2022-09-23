@@ -8,7 +8,7 @@ const ListOfDeals = ({ renderList, setDisplay }) => {
         <ol className="list-decimal ml-3">
           {renderList.map((x) => {
             return (
-              <li onClick={() => setDisplay(x)} key={uuidv4()} className="py-1 font-serif">
+              <li onClick={() => setDisplay(x)} key={uuidv4()} className="py-1 font-serif underline font-semibold">
                 {x.title}
               </li>
             );

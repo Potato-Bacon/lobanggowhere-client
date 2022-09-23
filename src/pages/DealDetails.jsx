@@ -94,8 +94,7 @@ function DealDetails() {
     >
       <div className="flex justify-evenly pt-24 items-start">
         <div
-          className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md
-         px-8 py-6 rounded-xl drop-shadow-lg "
+          className="flex-wrap bg-white bg-opacity-20 backdrop-blur-md px-8 py-6 rounded-xl drop-shadow-lg "
         >
           <img
             src={render.img}
